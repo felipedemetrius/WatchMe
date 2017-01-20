@@ -82,7 +82,13 @@ class DiscoverViewController: UIViewController {
             if let text = sender as? String {
                 vc?.textSearch = text
             }
+        } else if segue.identifier == "goToDetailSerie" {
+            let vc = segue.destination as? DetailSerieViewController
+            if let serie = sender as? SerieModel {
+                vc?.serie = serie
+            }
         }
+        
     }
  
 
@@ -133,6 +139,7 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        performSegue(withIdentifier: "goToDetailSerie", sender: dataSource[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

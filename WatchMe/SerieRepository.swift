@@ -104,17 +104,11 @@ class SerieRepository{
     
     class func nextSeries(parameters: Parameters? = nil, completionHandler: @escaping ([SerieModel]?) -> ()){
         
-        var parameters = parameters
         page += 1
         
-        if parameters != nil {
-           parameters?["page"] = page
-        } else {
-            parameters = Parameters()
-            parameters?["page"] = page
-        }
-        
-        
+        var parameters = Parameters()
+        parameters["page"] = page
+
         Alamofire.request(lastUrl, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseJSON { response in
             
             completionHandler(wrapperTrendingSerie(value: response.result.value))

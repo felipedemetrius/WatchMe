@@ -72,6 +72,7 @@
                     <connections>
                         <outlet property="collectionView" destination="TM2-vs-4vW" id="IWs-Vy-Elk"/>
                         <segue destination="RAY-iu-VWv" kind="show" identifier="goToSearch" id="NgT-x1-mv8"/>
+                        <segue destination="EBG-kJ-ghP" kind="show" identifier="goToDetailSerie" id="S5S-Nt-vH1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjq-0N-XYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,14 +134,26 @@
                     <connections>
                         <outlet property="collectionView" destination="X1D-Sl-D78" id="85Y-63-zeh"/>
                         <outlet property="searchBar" destination="dX7-oa-gpf" id="Lqy-nV-ZEa"/>
+                        <segue destination="EBG-kJ-ghP" kind="show" identifier="goToDetailSerie" id="eNM-Id-QnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvP-b7-SC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112.8" y="6.746626686656672"/>
         </scene>
+        <!--Details-->
+        <scene sceneID="MfO-wN-Ffv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Details" id="EBG-kJ-ghP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBA-Ti-Lnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826" y="-468"/>
+        </scene>
     </scenes>
     <resources>
         <image name="discover_icon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="S5S-Nt-vH1"/>
+    </inferredMetricsTieBreakers>
 </document>
