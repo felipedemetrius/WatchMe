@@ -12,7 +12,7 @@ class DiscoverViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var dataSource : [SerieModel]?
+    var dataSource : [SerieModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,31 @@ class DiscoverViewController: UIViewController {
 
 }
 
+extension DiscoverViewController : UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let maximumOffset = scrollView.contentSize.height - self.collectionView.frame.size.height
+        
+        if dataSource.count == 0 {
+            return
+        }
+        
+        if  maximumOffset - scrollView.contentOffset.y <= 0  {
+            
+            SerieRepository.nextSeries(completionHandler: {[weak self] series in
+                
+                if let seriess = series, seriess.count > 0 {
+                    self?.dataSource += seriess
+                    self?.collectionView.reloadData()
+                }
+                
+            })
+        }
+
+    }
+}
+
 extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -85,12 +110,12 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0
+        return dataSource.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let serie = dataSource?[indexPath.row] else {return UICollectionViewCell()}
+        let serie = dataSource[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SerieCollectionViewCell", for: indexPath) as? SerieCollectionViewCell
 

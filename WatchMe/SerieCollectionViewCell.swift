@@ -23,7 +23,7 @@ class SerieCollectionViewCell: UICollectionViewCell {
     func configureCell(serie: SerieModel){
         
         label.text = serie.title
-        
+                
         if let imdb = serie.imdb {
             configureImage(imdb: imdb)
         }

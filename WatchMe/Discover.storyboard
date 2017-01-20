@@ -63,7 +63,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pn4-vE-wBX">
-                        <barButtonItem key="leftBarButtonItem" image="filter_icon" id="jK4-cT-dTV"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="apb-bf-JJT"/>
                     </navigationItem>
                     <connections>
@@ -77,6 +76,5 @@
     </scenes>
     <resources>
         <image name="discover_icon" width="25" height="25"/>
-        <image name="filter_icon" width="24" height="23"/>
     </resources>
 </document>

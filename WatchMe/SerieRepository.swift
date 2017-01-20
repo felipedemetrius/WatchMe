@@ -16,8 +16,7 @@ import ObjectMapper_Realm
 enum TraktUrl: String{
     
     case Base                = "https://api.trakt.tv/shows/"
-    case Trending            = "trending/"
-    case Popular             = "popular?extended=full"
+    case Popular             = "popular/?extended=full"
     
     
     var description: String{
@@ -51,14 +50,35 @@ struct TraktCredentials{
 
 class SerieRepository{
     
-    class func getSeriesPopular(parameters: [String:AnyObject]? = nil, encoding: ParameterEncoding = URLEncoding.httpBody, completionHandler: @escaping ([SerieModel]?) -> ()){
+    private static var page = 1
+    private static var lastUrl: String!
+
+    class func getSeriesPopular(parameters: [String:AnyObject]? = nil, encoding: ParameterEncoding = URLEncoding.queryString, completionHandler: @escaping ([SerieModel]?) -> ()){
         
         Alamofire.request(TraktUrl.Popular.description, method: .get, parameters: parameters, encoding: encoding, headers: TraktCredentials.header).responseArray { (response: DataResponse<[SerieModel]>) in
 
+            self.lastUrl = TraktUrl.Popular.description
+            self.page = 1
+            
             completionHandler(response.result.value)
         }
         
     }
+    
+    
+    class func nextSeries(completionHandler: @escaping ([SerieModel]?) -> ()){
         
+        page += 1
+        
+        var parameters = Parameters()
+        parameters["page"] = page
+        
+        Alamofire.request(lastUrl, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseArray { (response: DataResponse<[SerieModel]>) in
+            
+            completionHandler(response.result.value)
+        }
+        
+    }
+    
 }
 
