@@ -15,6 +15,7 @@
 		B31E73151E315C6B00D32DEE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73141E315C6B00D32DEE /* StringExtension.swift */; };
 		B31E73171E3184FC00D32DEE /* ImageSerieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73161E3184FC00D32DEE /* ImageSerieModel.swift */; };
 		B31E73191E31857E00D32DEE /* ImageSerieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73181E31857E00D32DEE /* ImageSerieRepository.swift */; };
+		B31E731B1E324DD500D32DEE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E731A1E324DD500D32DEE /* SearchViewController.swift */; };
 		B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E646E91E312A6800ECAB02 /* AppDelegate.swift */; };
 		B3E646EF1E312A6800ECAB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E646ED1E312A6800ECAB02 /* Main.storyboard */; };
 		B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3E646F01E312A6800ECAB02 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		B31E73141E315C6B00D32DEE /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B31E73161E3184FC00D32DEE /* ImageSerieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSerieModel.swift; sourceTree = "<group>"; };
 		B31E73181E31857E00D32DEE /* ImageSerieRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSerieRepository.swift; sourceTree = "<group>"; };
+		B31E731A1E324DD500D32DEE /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B3E646E61E312A6800ECAB02 /* WatchMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E646E91E312A6800ECAB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3E646EE1E312A6800ECAB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				B31E730F1E3142A300D32DEE /* Xibs */,
 				B3E647221E312CF800ECAB02 /* DiscoverViewController.swift */,
+				B31E731A1E324DD500D32DEE /* SearchViewController.swift */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E647291E312ECD00ECAB02 /* WatchlistViewController.swift in Sources */,
+				B31E731B1E324DD500D32DEE /* SearchViewController.swift in Sources */,
 				B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */,
 				B31E73171E3184FC00D32DEE /* ImageSerieModel.swift in Sources */,
 				B3E647231E312CF800ECAB02 /* DiscoverViewController.swift in Sources */,

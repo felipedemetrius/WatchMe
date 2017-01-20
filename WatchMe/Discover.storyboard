@@ -63,15 +63,81 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pn4-vE-wBX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="apb-bf-JJT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="apb-bf-JJT">
+                            <connections>
+                                <action selector="search:" destination="eqx-NC-73T" id="yAm-rr-vCG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="TM2-vs-4vW" id="IWs-Vy-Elk"/>
+                        <segue destination="RAY-iu-VWv" kind="show" identifier="goToSearch" id="NgT-x1-mv8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjq-0N-XYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456.80000000000001" y="6.746626686656672"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="nib-vl-7T2">
+            <objects>
+                <viewController id="RAY-iu-VWv" customClass="SearchViewController" customModule="WatchMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XrX-Ts-lT2"/>
+                        <viewControllerLayoutGuide type="bottom" id="7n6-up-g99"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aeE-5H-bVL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search Series" translatesAutoresizingMaskIntoConstraints="NO" id="dX7-oa-gpf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X1D-Sl-D78">
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cky-Zh-uoN">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ypA-qc-huW">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="RAY-iu-VWv" id="jwB-x2-CPl"/>
+                                    <outlet property="delegate" destination="RAY-iu-VWv" id="VFj-Wy-4f3"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dX7-oa-gpf" secondAttribute="trailing" id="6CP-sO-bwH"/>
+                            <constraint firstItem="dX7-oa-gpf" firstAttribute="top" secondItem="XrX-Ts-lT2" secondAttribute="bottom" id="LdX-jz-Kou"/>
+                            <constraint firstItem="X1D-Sl-D78" firstAttribute="leading" secondItem="aeE-5H-bVL" secondAttribute="leading" id="P4j-YZ-maa"/>
+                            <constraint firstItem="X1D-Sl-D78" firstAttribute="top" secondItem="dX7-oa-gpf" secondAttribute="bottom" constant="8" id="aE2-vr-B3P"/>
+                            <constraint firstAttribute="trailing" secondItem="X1D-Sl-D78" secondAttribute="trailing" id="gWE-pA-nmX"/>
+                            <constraint firstItem="dX7-oa-gpf" firstAttribute="leading" secondItem="aeE-5H-bVL" secondAttribute="leading" id="vkD-XG-51F"/>
+                            <constraint firstItem="7n6-up-g99" firstAttribute="top" secondItem="X1D-Sl-D78" secondAttribute="bottom" id="ytQ-fm-qdD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="X1D-Sl-D78" id="85Y-63-zeh"/>
+                        <outlet property="searchBar" destination="dX7-oa-gpf" id="Lqy-nV-ZEa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SvP-b7-SC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112.8" y="6.746626686656672"/>
         </scene>
     </scenes>
     <resources>

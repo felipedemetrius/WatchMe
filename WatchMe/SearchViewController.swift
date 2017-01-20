@@ -1,35 +1,38 @@
 //
-//  DiscoverViewController.swift
+//  SearchViewController.swift
 //  WatchMe
 //
-//  Created by Felipe Silva  on 1/19/17.
+//  Created by Felipe Silva  on 1/20/17.
 //  Copyright © 2017 Felipe Silva . All rights reserved.
 //
 
 import UIKit
+import Alamofire
 
-class DiscoverViewController: UIViewController {
+class SearchViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dataSource : [SerieModel] = []
-    
-    var searchController : UISearchController!
+    var textSearch : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Trending"
-        
-        
-        configureDataSource()
+        title = "Search Series"
+        searchBar.text = textSearch
+        configureDataSource(query: searchBar.text ?? "")
         configureCollectionView()
-        configureSearchBarController()
     }
-
-    private func configureDataSource(){
-
-        SerieRepository.getSeriesTrending(completionHandler: {[weak self] series in
+    
+    fileprivate func configureDataSource(query: String){
+        
+        var parameters = Parameters()
+        parameters["query"] = query
+        
+        SerieRepository.searchSeries(parameters: parameters, query: query, completionHandler: {[weak self] series in
             
             if let series = series {
                 self?.dataSource = series
@@ -38,17 +41,6 @@ class DiscoverViewController: UIViewController {
             
         })
     }
-    
-    private func configureSearchBarController(){
-        
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.delegate = self
-        //searchController.searchBar.tintColor = UIColor.whiteColor
-        //searchController.searchBar.barTintColor = ColorConstants.orange
-    }
-
     
     private func configureCollectionView(){
         
@@ -66,47 +58,40 @@ class DiscoverViewController: UIViewController {
         collectionView.register(UINib(nibName: "SerieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SerieCollectionViewCell")
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+
+    /*
     // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToSearch" {
-            let vc = segue.destination as? SearchViewController
-            if let text = sender as? String {
-                vc?.textSearch = text
-            }
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
- 
+    */
 
 }
 
-extension DiscoverViewController: UISearchBarDelegate{
-    
-    @IBAction func search(_ sender: UIBarButtonItem) {
-        searchController.searchBar.placeholder = "Search Series"
-        present(searchController, animated: true, completion: nil)
-    }
+extension SearchViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: "goToSearch", sender: searchController.searchBar.text)
-        searchController.searchBar.text = ""
+        configureDataSource(query: searchBar.text ?? "")
     }
+    
 }
 
-extension DiscoverViewController : UIScrollViewDelegate {
-
+extension SearchViewController : UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        searchBar.endEditing(true)
         
         let maximumOffset = scrollView.contentSize.height - self.collectionView.frame.size.height
         
@@ -116,7 +101,10 @@ extension DiscoverViewController : UIScrollViewDelegate {
         
         if  maximumOffset - scrollView.contentOffset.y <= 0  {
             
-            SerieRepository.nextSeries(completionHandler: {[weak self] series in
+            var parameters = Parameters()
+            parameters["query"] = searchBar.text
+            
+            SerieRepository.nextSeries(parameters: parameters, completionHandler: {[weak self] series in
                 
                 if let seriess = series, seriess.count > 0 {
                     self?.dataSource += seriess
@@ -125,11 +113,13 @@ extension DiscoverViewController : UIScrollViewDelegate {
                 
             })
         }
-
+        
     }
+
 }
 
-extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+
+extension SearchViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -144,7 +134,7 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count 
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,11 +142,12 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
         let serie = dataSource[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SerieCollectionViewCell", for: indexPath) as? SerieCollectionViewCell
-
+        
         cell?.configureCell(serie: serie)
         
         return cell!
     }
     
 }
+
 
