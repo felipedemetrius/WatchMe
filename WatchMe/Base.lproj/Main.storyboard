@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QSu-P5-HgM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="rJH-GY-TIx">
+            <objects>
+                <tabBarController id="QSu-P5-HgM" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="bDq-ky-lKq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="VWD-6U-kvx" kind="relationship" relationship="viewControllers" id="Jl7-I9-u5u"/>
+                        <segue destination="z8H-JF-kW8" kind="relationship" relationship="viewControllers" id="dTk-ha-wZS"/>
+                        <segue destination="gmt-c3-8Fc" kind="relationship" relationship="viewControllers" id="UZk-EC-pFB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1as-HL-PuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-866" y="-333"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="gwR-gs-EWg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" id="VWD-6U-kvx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="discover_icon" id="v8Q-bB-RUb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1h-08-8z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-306" y="-395"/>
+        </scene>
+        <!--Watchlist-->
+        <scene sceneID="kzr-WG-9AE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Watchlist" id="z8H-JF-kW8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="watchlist_icon" id="TUf-xa-Byv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XFm-nb-bCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-303" y="-321"/>
+        </scene>
+        <!--Watching-->
+        <scene sceneID="0xh-ZA-ZxV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Watching" id="gmt-c3-8Fc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Watching" image="watching_icon" id="Rrk-s6-KcU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zd7-2p-kjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="-233"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="discover_icon" width="25" height="25"/>
+        <image name="watching_icon" width="42" height="25"/>
+        <image name="watchlist_icon" width="25" height="30"/>
+    </resources>
+</document>

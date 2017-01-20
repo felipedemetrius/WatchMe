@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="15J-R3-FsW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Watching-->
+        <scene sceneID="5Q7-Ho-XMA">
+            <objects>
+                <navigationController id="15J-R3-FsW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Watching" image="watching_icon" id="WCf-cf-eJv"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dnn-Bc-FpA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="E6p-r1-0xT" kind="relationship" relationship="rootViewController" id="6Dk-g3-xyL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UR3-Wg-2Sk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="227"/>
+        </scene>
+        <!--Watching View Controller-->
+        <scene sceneID="wEA-vW-aWZ">
+            <objects>
+                <viewController id="E6p-r1-0xT" customClass="WatchingViewController" customModule="WatchMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GaC-m4-gbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="aVm-HK-FH4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ugO-6c-nh2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SQ4-8g-AyR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rmy-zf-AVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="442" y="226"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="watching_icon" width="37" height="27"/>
+    </resources>
+</document>
