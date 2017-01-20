@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsSerieTableViewCell" rowHeight="89" id="KGk-i7-Jjw" customClass="ActionsSerieTableViewCell" customModule="WatchMe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="88.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFv-Ng-46c">
+                        <rect key="frame" x="20" y="11" width="42" height="66"/>
+                        <state key="normal" image="watching_icon"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpR-t6-giI">
+                        <rect key="frame" x="112" y="19" width="35" height="49"/>
+                        <state key="normal" image="whishlist_add"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bew-5E-va7">
+                        <rect key="frame" x="285" y="19" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0e-Gf-XYF">
+                        <rect key="frame" x="280" y="50" width="52.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="bew-5E-va7" secondAttribute="trailing" constant="60" id="6hz-Fj-ebO"/>
+                    <constraint firstItem="R0e-Gf-XYF" firstAttribute="centerX" secondItem="bew-5E-va7" secondAttribute="centerX" id="6n3-J8-K3J"/>
+                    <constraint firstItem="R0e-Gf-XYF" firstAttribute="top" secondItem="bew-5E-va7" secondAttribute="bottom" constant="10" id="9z4-FV-g3I"/>
+                    <constraint firstItem="bew-5E-va7" firstAttribute="top" secondItem="tpR-t6-giI" secondAttribute="top" id="Ctt-3D-rbD"/>
+                    <constraint firstItem="mFv-Ng-46c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Fgl-l1-mWw"/>
+                    <constraint firstItem="mFv-Ng-46c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="RKy-Wy-zbb"/>
+                    <constraint firstItem="tpR-t6-giI" firstAttribute="leading" secondItem="mFv-Ng-46c" secondAttribute="trailing" constant="50" id="XCB-75-CRX"/>
+                    <constraint firstAttribute="bottom" secondItem="tpR-t6-giI" secondAttribute="bottom" constant="20.5" id="ZoF-ZI-rKu"/>
+                    <constraint firstAttribute="bottom" secondItem="mFv-Ng-46c" secondAttribute="bottom" constant="11.5" id="aNW-Og-5Dw"/>
+                    <constraint firstItem="tpR-t6-giI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="eIO-Nd-K8g"/>
+                    <constraint firstItem="bew-5E-va7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tpR-t6-giI" secondAttribute="trailing" constant="20" id="xdd-Dr-bWK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="71.5" y="151.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="watching_icon" width="42" height="25"/>
+        <image name="whishlist_add" width="35" height="37"/>
+    </resources>
+</document>
