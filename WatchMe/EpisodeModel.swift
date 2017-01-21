@@ -12,7 +12,7 @@ import ObjectMapper
 class EpisodeModel: Mappable {
     
     var season: Int?
-    var episode : Int?
+    var number : Int?
     var title : String?
     var imdb : String?
     var overview : String?
@@ -26,7 +26,7 @@ class EpisodeModel: Mappable {
     
     func mapping(map: Map) {
         season <- map["season"]
-        episode <- map["number"]
+        number <- map["number"]
         title <- map["title"]
         imdb <- map["ids.imdb"]
         tvdb <- map["ids.tvdb"]

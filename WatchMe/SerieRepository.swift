@@ -15,9 +15,12 @@ import ObjectMapper_Realm
 
 enum TraktUrl: String{
     
-    case Base     = "https://api.trakt.tv/"
-    case Trending = "shows/trending/?extended=full"
-    case Search   = "search/show?extended=full"
+    case Base        = "https://api.trakt.tv/"
+    case Shows       = "shows/"
+    case Trending    = "shows/trending/?extended=full"
+    case Search      = "search/show?extended=full"
+    case NextEpisode = "next_episode?extended=full"
+    
     
     var description: String{
         switch self{

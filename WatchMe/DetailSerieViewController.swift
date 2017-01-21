@@ -24,17 +24,27 @@ class DetailSerieViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var serie : SerieModel!
+    var nextEpisode : EpisodeModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = serie.title
         configureTableView()
+        configureNextEpisode()
     }
     
     override func viewDidLayoutSubviews() {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
+    }
+    
+    private func configureNextEpisode(){
+        
+        EpisodeRepository.getNextEpisode(slug: serie.slug ?? "") { [weak self] result in
+            self?.nextEpisode = result
+            self?.tableView.reloadData()
+        }
     }
 
     private func configureTableView(){
@@ -150,7 +160,7 @@ extension DetailSerieViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
         
-        cell?.configureCell(serie: serie)
+        cell?.configureCell(episode: nextEpisode)
         
         return cell!
     }

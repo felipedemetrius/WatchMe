@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
 
         title = "Search Series"
         searchBar.text = textSearch
+
         configureDataSource(query: searchBar.text ?? "")
         configureCollectionView()
     }
@@ -80,9 +81,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
-        
         searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
         configureDataSource(query: searchBar.text ?? "")
     }
     

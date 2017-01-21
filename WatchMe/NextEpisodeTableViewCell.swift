@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NextEpisodeTableViewCell: UITableViewCell {
 
@@ -30,8 +31,25 @@ class NextEpisodeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(serie: SerieModel){
+    func configureCell(episode: EpisodeModel?){
         
+        guard let episode = episode else {
+            lblTitle.text = "Unavailable"
+            return
+        }
+        
+        lblTitle.text = episode.title
+        
+        if let season = episode.season, let number = episode.number {
+            lblEpisode.text = "S" + season.description + "E" + number.description
+        }
+    
+        lblDate.text = episode.first_aired
+        
+        ImageSerieRepository.getImageSerie(imdb: episode.imdb ?? "") {[weak self] result in
+            
+            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+        }
     }
     
 }
