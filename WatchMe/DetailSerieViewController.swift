@@ -134,7 +134,6 @@ extension DetailSerieViewController {
                 
         cell?.configureImage(imdb: serie.imdb)
         
-        
         return cell!
     }
     
@@ -142,6 +141,7 @@ extension DetailSerieViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsSerieTableViewCell", for: indexPath) as? ActionsSerieTableViewCell
         
+        cell?.configureCell(serie: serie)
         
         return cell!
     }
@@ -150,6 +150,7 @@ extension DetailSerieViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
         
+        cell?.configureCell(serie: serie)
         
         return cell!
     }
@@ -157,8 +158,6 @@ extension DetailSerieViewController {
     func getMoreEpisodesCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MoreEpisodesTableViewCell", for: indexPath) as? MoreEpisodesTableViewCell
-        
-        
         return cell!
     }
     
@@ -166,6 +165,7 @@ extension DetailSerieViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTableViewCell", for: indexPath) as? OverviewTableViewCell
         
+        cell?.label.text = serie.overview
         
         return cell!
     }

@@ -42,6 +42,9 @@
                     <constraint firstItem="CrV-Gn-mYG" firstAttribute="leading" secondItem="5pI-qV-OdP" secondAttribute="leading" id="mtA-Ku-OcL"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="label" destination="CrV-Gn-mYG" id="WU3-Ra-9Og"/>
+            </connections>
             <point key="canvasLocation" x="34" y="112"/>
         </tableViewCell>
     </objects>

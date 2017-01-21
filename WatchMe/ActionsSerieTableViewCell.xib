@@ -21,10 +21,16 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFv-Ng-46c">
                         <rect key="frame" x="20" y="11" width="42" height="66"/>
                         <state key="normal" image="watching_icon"/>
+                        <connections>
+                            <action selector="watch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bh0-mX-Rgj"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpR-t6-giI">
                         <rect key="frame" x="112" y="19" width="35" height="49"/>
                         <state key="normal" image="whishlist_add"/>
+                        <connections>
+                            <action selector="wishlist:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xtE-xW-frQ"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bew-5E-va7">
                         <rect key="frame" x="285" y="19" width="42" height="21"/>
@@ -53,6 +59,12 @@
                     <constraint firstItem="bew-5E-va7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tpR-t6-giI" secondAttribute="trailing" constant="20" id="xdd-Dr-bWK"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btnWatch" destination="mFv-Ng-46c" id="fEr-B8-BkS"/>
+                <outlet property="btnWishlist" destination="tpR-t6-giI" id="k3C-d5-Dho"/>
+                <outlet property="lblPercent" destination="bew-5E-va7" id="QdC-jw-Url"/>
+                <outlet property="lblProgress" destination="R0e-Gf-XYF" id="llp-tq-11d"/>
+            </connections>
             <point key="canvasLocation" x="71.5" y="151.5"/>
         </tableViewCell>
     </objects>

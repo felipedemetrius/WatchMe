@@ -10,6 +10,15 @@ import UIKit
 
 class ActionsSerieTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var btnWatch: UIButton!
+    
+    @IBOutlet weak var btnWishlist: UIButton!
+    
+    @IBOutlet weak var lblPercent: UILabel!
+    
+    @IBOutlet weak var lblProgress: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +30,15 @@ class ActionsSerieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureCell(serie: SerieModel){
+        
+        lblPercent.text = "0%"
+        lblProgress.text = "0/" + serie.aired_episodes.description
+    }
+
+    @IBAction func wishlist(_ sender: UIButton) {
+    }
+    
+    @IBAction func watch(_ sender: UIButton) {
+    }
 }

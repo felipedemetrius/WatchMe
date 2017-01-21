@@ -28,6 +28,7 @@
 		B31E73351E329AF800D32DEE /* MoreEpisodesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73331E329AF800D32DEE /* MoreEpisodesTableViewCell.xib */; };
 		B31E733A1E329D3E00D32DEE /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73381E329D3E00D32DEE /* OverviewTableViewCell.swift */; };
 		B31E733B1E329D3E00D32DEE /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */; };
+		B31E733D1E33E07D00D32DEE /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */; };
 		B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E646E91E312A6800ECAB02 /* AppDelegate.swift */; };
 		B3E646EF1E312A6800ECAB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E646ED1E312A6800ECAB02 /* Main.storyboard */; };
 		B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3E646F01E312A6800ECAB02 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		B31E73331E329AF800D32DEE /* MoreEpisodesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreEpisodesTableViewCell.xib; sourceTree = "<group>"; };
 		B31E73381E329D3E00D32DEE /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
+		B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
 		B3E646E61E312A6800ECAB02 /* WatchMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E646E91E312A6800ECAB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3E646EE1E312A6800ECAB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			children = (
 				B31E73101E3145E200D32DEE /* SerieModel.swift */,
 				B31E73161E3184FC00D32DEE /* ImageSerieModel.swift */,
+				B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				B31E73251E32855500D32DEE /* ImageDetailSerieTableViewCell.swift in Sources */,
 				B31E73301E32979F00D32DEE /* NextEpisodeTableViewCell.swift in Sources */,
 				B31E731B1E324DD500D32DEE /* SearchViewController.swift in Sources */,
+				B31E733D1E33E07D00D32DEE /* EpisodeModel.swift in Sources */,
 				B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */,
 				B31E73171E3184FC00D32DEE /* ImageSerieModel.swift in Sources */,
 				B3E647231E312CF800ECAB02 /* DiscoverViewController.swift in Sources */,

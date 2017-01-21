@@ -65,6 +65,12 @@
                     <constraint firstItem="wut-dS-zsO" firstAttribute="leading" secondItem="O8R-Dv-JeW" secondAttribute="trailing" constant="8" id="zXo-Zf-iW1"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imageEpisode" destination="O8R-Dv-JeW" id="SEN-ou-JU1"/>
+                <outlet property="lblDate" destination="GnF-am-d5L" id="Bd9-7u-e11"/>
+                <outlet property="lblEpisode" destination="R62-aU-erf" id="8P1-sZ-Ywa"/>
+                <outlet property="lblTitle" destination="wut-dS-zsO" id="02C-RZ-edd"/>
+            </connections>
             <point key="canvasLocation" x="34" y="7.5"/>
         </tableViewCell>
     </objects>
