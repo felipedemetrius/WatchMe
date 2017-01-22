@@ -70,14 +70,15 @@ class ActionsSerieTableViewCell: UITableViewCell {
     @IBAction func watch(_ sender: UIButton) {
         
         if serie.watching {
-            serie.update(value: false, key: "watching")
-            serie.removeAllEpisodes()
-            configureCell(serie: serie)
-            btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
-            
-        } else {
             serie.remove()
+            btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
+
+        } else {
+            serie.update(value: true, key: "watching")
+            
+            configureCell(serie: serie)
             btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
+            
         }
         
     }

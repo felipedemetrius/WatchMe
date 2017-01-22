@@ -133,18 +133,34 @@ class SerieRepository{
         return series.reversed()
     }
     
-    class func getWishlist() -> [SerieModel]? {
+    class func getSlugsLocal()-> [String]?{
         let realm = try! Realm()
-        let series = realm.objects(SerieModel.self).filter("wishlist == true")
+        let series = realm.objects(SerieModel.self).filter("watching == true")
+        
+        var slugs : [String] = []
+        
+        for serie in series {
+            slugs.append(serie.slug ?? "")
+        }
+        
+        return slugs.count > 0 ? slugs : nil
+    }
+    
+    class func getSeriesWithEpisodes() -> [SerieModel]? {
+        let realm = try! Realm()
+        let series = realm.objects(SerieModel.self).filter("watching == true").filter { serie -> Bool in
+            return serie.watchedEpisodes.count > 0
+        }
+        
         return series.reversed()
     }
-
+    
     class func getEpisodeWatched(slug : String, target: String) -> EpisodeModel? {
         let realm = try! Realm()
         return realm.objects(SerieModel.self).filter("slug == '\(slug)'").first?.watchedEpisodes.first(where: { episode -> Bool in
             return episode.target == target
         })
     }
-    
+        
 }
 

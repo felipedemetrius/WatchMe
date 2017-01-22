@@ -23,24 +23,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR9-8Y-Il7">
-                        <rect key="frame" x="71" y="10" width="9.5" height="23.5"/>
-                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="GR9-8Y-Il7" firstAttribute="leading" secondItem="JEc-Pz-nIV" secondAttribute="trailing" constant="8" id="2m5-56-OPQ"/>
                     <constraint firstItem="JEc-Pz-nIV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="AJh-gX-HBI"/>
-                    <constraint firstItem="GR9-8Y-Il7" firstAttribute="centerY" secondItem="JEc-Pz-nIV" secondAttribute="centerY" id="N3k-na-8Xc"/>
                     <constraint firstItem="JEc-Pz-nIV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="kBR-cv-iZv"/>
                     <constraint firstAttribute="bottom" secondItem="JEc-Pz-nIV" secondAttribute="bottom" constant="11" id="m7w-FV-qbY"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <connections>
-                <outlet property="lblNumber" destination="GR9-8Y-Il7" id="vMS-0j-b3f"/>
+                <outlet property="lblNumber" destination="JEc-Pz-nIV" id="ONm-It-NyB"/>
             </connections>
         </tableViewCell>
     </objects>

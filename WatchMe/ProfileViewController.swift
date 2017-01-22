@@ -1,114 +1,147 @@
 //
-//  SeasonsSerieViewController.swift
+//  ProfileViewController.swift
 //  WatchMe
 //
-//  Created by Felipe Silva  on 1/21/17.
+//  Created by Felipe Silva  on 1/22/17.
 //  Copyright © 2017 Felipe Silva . All rights reserved.
 //
 
 import UIKit
 
-class SeasonsSerieViewController: UIViewController {
-    
+class ProfileViewController: UIViewController {
+
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    var serie : SerieModel!
+    var dataSource : [SerieModel]? {
+        return seriesWatching
+    }
     
-    var seasons : [SeasonModel]?
+    private var seriesWatching : [SerieModel]?
+    private var seriesNextUp : [SerieModel]?
+    
+    fileprivate var segueSerie : SerieModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = serie.title
         configureTableView()
         configureDatasource()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        configureDatasource()
         tableView.reloadData()
     }
     
     private func configureDatasource(){
         
-        SeasonRepository.getSeasons(slug: serie.slug ?? "") { [weak self] seasons in
+        seriesWatching = SerieRepository.getSeriesWithEpisodes()
+        
+        guard seriesWatching != nil else {return}
+        
+        for (index, serie) in seriesWatching!.enumerated(){
             
-            if let seasons = seasons {
-                self?.seasons = seasons
+            EpisodeRepository.getNextEpisode(slug: serie.slug ?? "") { [weak self] episode in
+                self?.seriesWatching![index].nextEpisode = episode
                 self?.tableView.reloadData()
             }
-            
         }
+        
+        tableView.reloadData()
     }
     
     private func configureTableView(){
-        
-        if let topItem = navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        }
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 175
         
         tableView.register(UINib(nibName: "NextEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "NextEpisodeTableViewCell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    @IBAction func changeSegmentControl(_ sender: UISegmentedControl) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDetailEpisode" {
             let vc = segue.destination as? DetailEpisodeViewController
             if let episode = sender as? EpisodeModel {
-                vc?.serie = serie
+                vc?.serie = segueSerie
                 vc?.episode = episode
+            } else {
+                return
             }
         }
     }
 
 }
 
-extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSource {
+extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let seasons = self.seasons else {return 0}
-        let season = seasons[section]
-        return season.episodes?.count ??  0
+        guard let series = self.dataSource else {return 0}
+        let serie = series[section]
+        
+        if segmentControl.selectedSegmentIndex == 0 {
+            return serie.watchedEpisodes.count
+        } else {
+            return serie.nextEpisode != nil ? 1 : 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let seasons = self.seasons else {return }
+        guard let series = self.dataSource else {return}
         
-        let season  = seasons[indexPath.section]
+        let serie = series[indexPath.section]
         
-        guard let episode = season.episodes?[indexPath.row] else {return }
-
-        performSegue(withIdentifier: "goToDetailEpisode", sender: episode)
+        var episode : EpisodeModel?
+        
+        if segmentControl.selectedSegmentIndex == 0 {
+            episode = serie.watchedEpisodes[indexPath.row]
+        } else {
+            episode = serie.nextEpisode
+        }
+        
+        self.segueSerie = serie
+        performSegue(withIdentifier: "goToDetailEpisode", sender: episode)        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let seasons = self.seasons else {return 0}
-        return seasons.count
+        guard let series = self.dataSource else {return 0}
+        return series.count
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let seasons = self.seasons else {return UITableViewCell()}
-
-        let season  = seasons[indexPath.section]
+        guard let series = self.dataSource else {return UITableViewCell()}
         
-        guard let episode = season.episodes?[indexPath.row] else {return UITableViewCell()}
+        let serie  = series[indexPath.section]
+        
+        var episode : EpisodeModel?
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
         
-        cell?.configureEpisode(episode: episode, serie: serie)
+        if segmentControl.selectedSegmentIndex == 0 {
+            episode = serie.watchedEpisodes[indexPath.row]
+            cell?.configureEpisode(episode: episode!, serie: serie)
+        } else {
+            episode = serie.nextEpisode
+            cell?.configureNextEpisode(episode: episode)
+        }
         
         return cell!
     }
@@ -116,12 +149,12 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let seasons = self.seasons else {return nil}
-
+        guard let series = self.dataSource else {return nil}
+        
         let headerView = Bundle.main.loadNibNamed("HeaderSeasonTableViewCell", owner: nil, options: nil)! [0] as! HeaderSeasonTableViewCell
         
-        let season  = seasons[section]
-        headerView.lblNumber.text = "Season " + (season.number?.description ?? "")
+        let serie  = series[section]
+        headerView.lblNumber.text = serie.title
         
         return headerView
     }
@@ -129,7 +162,7 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 175
@@ -140,8 +173,6 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
     }
-
+    
     
 }
-
-

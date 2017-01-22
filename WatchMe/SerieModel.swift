@@ -28,6 +28,8 @@ class SerieModel: Object, Mappable {
     dynamic var wishlist = false
     var watchedEpisodes = List<EpisodeModel>()
     
+    var nextEpisode : EpisodeModel?
+    
     required convenience init?(map: Map) {
         self.init()
     }
