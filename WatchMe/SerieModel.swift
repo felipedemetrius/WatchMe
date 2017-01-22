@@ -98,9 +98,12 @@ extension SerieModel {
     
     func removeEpisode(episode: EpisodeModel){
         
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(episode)
+        if let episode = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(episode)
+            }
         }
         
     }

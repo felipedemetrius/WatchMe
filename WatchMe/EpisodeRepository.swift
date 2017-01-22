@@ -36,5 +36,9 @@ class EpisodeRepository{
         
     }
 
+    class func getLocal(tvdb : Int) -> EpisodeModel? {
+        let realm = try! Realm()
+        return realm.objects(EpisodeModel.self).filter("tvdb == \(tvdb)").first
+    }
     
 }
