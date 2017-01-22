@@ -25,6 +25,8 @@ class SerieModel: Object, Mappable {
     dynamic var year: Int = 0
     dynamic var aired_episodes : Int = 0
 
+    dynamic var watching = false
+    dynamic var wishlist = false
     
     required convenience init?(map: Map) {
         self.init()
@@ -45,6 +47,31 @@ class SerieModel: Object, Mappable {
         country <- map["country"]
         updated_at <- map["updated_at"]
         aired_episodes <- map["aired_episodes"]
+    }
+    
+}
+
+extension SerieModel {
+    
+    func save(value: Any?, key: String){
+        
+        let realm = try! Realm()
+        
+        guard let slug = self.slug else {return}
+        
+        if SerieRepository.getLocal(slug: slug) == nil {
+            
+            try! realm.write {
+                realm.add(self)
+                self.setValue(value, forKey: key)
+            }
+            
+        } else {
+            try! realm.write {
+                self.setValue(value, forKey: key)
+            }
+        }
+
     }
     
 }

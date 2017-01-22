@@ -37,11 +37,11 @@
             </objects>
             <point key="canvasLocation" x="-306" y="-395"/>
         </scene>
-        <!--Watchlist-->
+        <!--Wishlist-->
         <scene sceneID="kzr-WG-9AE">
             <objects>
-                <viewControllerPlaceholder storyboardName="Watchlist" id="z8H-JF-kW8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watchlist" image="watchlist_icon" id="TUf-xa-Byv"/>
+                <viewControllerPlaceholder storyboardName="Wishlist" id="z8H-JF-kW8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="wishlist_icon" id="TUf-xa-Byv"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFm-nb-bCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,6 +61,6 @@
     <resources>
         <image name="discover_icon" width="25" height="25"/>
         <image name="watching_icon" width="42" height="25"/>
-        <image name="watchlist_icon" width="25" height="30"/>
+        <image name="wishlist_icon" width="25" height="30"/>
     </resources>
 </document>

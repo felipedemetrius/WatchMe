@@ -32,11 +32,19 @@ class DetailSerieViewController: UIViewController {
         title = serie.title
         configureTableView()
         configureNextEpisode()
+        getLocalSerie()
     }
     
     override func viewDidLayoutSubviews() {
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
+    }
+    
+    private func getLocalSerie(){
+        if let serieLocal = SerieRepository.getLocal(slug: serie.slug ?? "") {
+            serie = serieLocal
+            tableView.reloadData()
+        }
     }
     
     private func configureNextEpisode(){

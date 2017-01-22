@@ -27,7 +27,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpR-t6-giI">
                         <rect key="frame" x="112" y="19" width="35" height="49"/>
-                        <state key="normal" image="whishlist_add"/>
+                        <state key="normal" image="wishlist_add"/>
                         <connections>
                             <action selector="wishlist:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xtE-xW-frQ"/>
                         </connections>
@@ -70,6 +70,6 @@
     </objects>
     <resources>
         <image name="watching_icon" width="42" height="25"/>
-        <image name="whishlist_add" width="35" height="37"/>
+        <image name="wishlist_add" width="35" height="37"/>
     </resources>
 </document>

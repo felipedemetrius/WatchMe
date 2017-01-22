@@ -1,5 +1,5 @@
 //
-//  WatchingViewController.swift
+//  WishlistViewController.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/19/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WatchingViewController: UIViewController {
+class WishlistViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -17,7 +17,7 @@ class WatchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Watching"
+        title = "Wishlist"
         configureCollectionView()
     }
     
@@ -25,10 +25,10 @@ class WatchingViewController: UIViewController {
         super.viewWillAppear(animated)
         configureDataSource()
     }
-    
+
     private func configureDataSource(){
         
-        dataSource = SerieRepository.getWatching()
+        dataSource = SerieRepository.getWishlist()
         collectionView.reloadData()
     }
     
@@ -47,16 +47,15 @@ class WatchingViewController: UIViewController {
         
         collectionView.register(UINib(nibName: "SerieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SerieCollectionViewCell")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToDetailSerie" {
@@ -70,7 +69,7 @@ class WatchingViewController: UIViewController {
 
 }
 
-extension WatchingViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension WishlistViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -104,4 +103,5 @@ extension WatchingViewController : UICollectionViewDelegate, UICollectionViewDat
     }
     
 }
+
 

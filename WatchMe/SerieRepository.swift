@@ -119,5 +119,24 @@ class SerieRepository{
         
     }
     
+    class func getLocal(slug : String) -> SerieModel? {
+        let realm = try! Realm()
+        return realm.objects(SerieModel.self).filter("slug == '\(slug)'").first
+    }
+    
+    class func getWatching() -> [SerieModel]? {
+        let realm = try! Realm()
+        
+        let series = realm.objects(SerieModel.self).filter("watching == true")
+        return series.reversed()
+    }
+    
+    class func getWishlist() -> [SerieModel]? {
+        let realm = try! Realm()
+        
+        let series = realm.objects(SerieModel.self).filter("wishlist == true")
+        return series.reversed()
+    }
+
 }
 

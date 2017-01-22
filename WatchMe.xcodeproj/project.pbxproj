@@ -38,8 +38,8 @@
 		B3E6470A1E312A6800ECAB02 /* WatchMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E647091E312A6800ECAB02 /* WatchMeUITests.swift */; };
 		B3E647201E312BAF00ECAB02 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E6471F1E312BAF00ECAB02 /* Discover.storyboard */; };
 		B3E647231E312CF800ECAB02 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E647221E312CF800ECAB02 /* DiscoverViewController.swift */; };
-		B3E647261E312E2D00ECAB02 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E647251E312E2D00ECAB02 /* Watchlist.storyboard */; };
-		B3E647291E312ECD00ECAB02 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E647281E312ECD00ECAB02 /* WatchlistViewController.swift */; };
+		B3E647261E312E2D00ECAB02 /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E647251E312E2D00ECAB02 /* Wishlist.storyboard */; };
+		B3E647291E312ECD00ECAB02 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E647281E312ECD00ECAB02 /* WishlistViewController.swift */; };
 		B3E6472C1E312F3000ECAB02 /* Watching.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E6472B1E312F3000ECAB02 /* Watching.storyboard */; };
 		B3E6472F1E312F7300ECAB02 /* WatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6472E1E312F7300ECAB02 /* WatchingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -100,8 +100,8 @@
 		B3E6470B1E312A6800ECAB02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3E6471F1E312BAF00ECAB02 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		B3E647221E312CF800ECAB02 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		B3E647251E312E2D00ECAB02 /* Watchlist.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
-		B3E647281E312ECD00ECAB02 /* WatchlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		B3E647251E312E2D00ECAB02 /* Wishlist.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
+		B3E647281E312ECD00ECAB02 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		B3E6472B1E312F3000ECAB02 /* Watching.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Watching.storyboard; sourceTree = "<group>"; };
 		B3E6472E1E312F7300ECAB02 /* WatchingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchingViewController.swift; sourceTree = "<group>"; };
 		CF53AD63D22C0796BB80FDC7 /* Pods_WatchMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,7 +260,7 @@
 			children = (
 				B31E731C1E3267E100D32DEE /* Details */,
 				B3E647211E312CE400ECAB02 /* Discover */,
-				B3E647271E312EB600ECAB02 /* Watchlist */,
+				B3E647271E312EB600ECAB02 /* Wishlist */,
 				B3E6472D1E312F5A00ECAB02 /* Watching */,
 			);
 			name = Controllers;
@@ -273,7 +273,7 @@
 				B3E646F21E312A6800ECAB02 /* LaunchScreen.storyboard */,
 				B31E731F1E3268B300D32DEE /* Details */,
 				B3E6471E1E312B9400ECAB02 /* Discover */,
-				B3E647241E312E1700ECAB02 /* Watchlist */,
+				B3E647241E312E1700ECAB02 /* Wishlist */,
 				B3E6472A1E312F0800ECAB02 /* Watching */,
 			);
 			name = Views;
@@ -343,20 +343,20 @@
 			name = Discover;
 			sourceTree = "<group>";
 		};
-		B3E647241E312E1700ECAB02 /* Watchlist */ = {
+		B3E647241E312E1700ECAB02 /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
-				B3E647251E312E2D00ECAB02 /* Watchlist.storyboard */,
+				B3E647251E312E2D00ECAB02 /* Wishlist.storyboard */,
 			);
-			name = Watchlist;
+			name = Wishlist;
 			sourceTree = "<group>";
 		};
-		B3E647271E312EB600ECAB02 /* Watchlist */ = {
+		B3E647271E312EB600ECAB02 /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
-				B3E647281E312ECD00ECAB02 /* WatchlistViewController.swift */,
+				B3E647281E312ECD00ECAB02 /* WishlistViewController.swift */,
 			);
-			name = Watchlist;
+			name = Wishlist;
 			sourceTree = "<group>";
 		};
 		B3E6472A1E312F0800ECAB02 /* Watching */ = {
@@ -496,7 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E647261E312E2D00ECAB02 /* Watchlist.storyboard in Resources */,
+				B3E647261E312E2D00ECAB02 /* Wishlist.storyboard in Resources */,
 				B3E646F41E312A6800ECAB02 /* LaunchScreen.storyboard in Resources */,
 				B31E730E1E31416C00D32DEE /* SerieCollectionViewCell.xib in Resources */,
 				B3E647201E312BAF00ECAB02 /* Discover.storyboard in Resources */,
@@ -582,7 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B31E73211E3268D400D32DEE /* DetailSerieViewController.swift in Sources */,
-				B3E647291E312ECD00ECAB02 /* WatchlistViewController.swift in Sources */,
+				B3E647291E312ECD00ECAB02 /* WishlistViewController.swift in Sources */,
 				B31E73251E32855500D32DEE /* ImageDetailSerieTableViewCell.swift in Sources */,
 				B31E73301E32979F00D32DEE /* NextEpisodeTableViewCell.swift in Sources */,
 				B31E731B1E324DD500D32DEE /* SearchViewController.swift in Sources */,
