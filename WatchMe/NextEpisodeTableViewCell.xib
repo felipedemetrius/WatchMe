@@ -43,16 +43,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRa-Dt-7hD">
-                        <rect key="frame" x="8" y="8" width="91" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRa-Dt-7hD">
+                        <rect key="frame" x="8" y="29" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-qd-gVD">
+                        <rect key="frame" x="263" y="93" width="16" height="22"/>
+                        <state key="normal" image="watching_icon"/>
+                        <connections>
+                            <action selector="watch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qns-pY-k9U"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="R62-aU-erf" firstAttribute="leading" secondItem="GnF-am-d5L" secondAttribute="leading" id="2Vr-kp-BcN"/>
                     <constraint firstItem="GnF-am-d5L" firstAttribute="top" secondItem="R62-aU-erf" secondAttribute="bottom" constant="8" id="8yQ-Dt-ZHp"/>
+                    <constraint firstItem="BiD-qd-gVD" firstAttribute="centerY" secondItem="O8R-Dv-JeW" secondAttribute="centerY" id="CBy-KW-gBS"/>
                     <constraint firstItem="GnF-am-d5L" firstAttribute="bottom" secondItem="O8R-Dv-JeW" secondAttribute="bottom" id="Ee2-yD-Efs"/>
                     <constraint firstItem="R62-aU-erf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wut-dS-zsO" secondAttribute="bottom" constant="10" id="J7z-N0-KeV"/>
                     <constraint firstItem="O8R-Dv-JeW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="PI8-Sz-tCA"/>
@@ -65,13 +73,21 @@
                     <constraint firstItem="wut-dS-zsO" firstAttribute="leading" secondItem="O8R-Dv-JeW" secondAttribute="trailing" constant="8" id="zXo-Zf-iW1"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BiD-qd-gVD" secondAttribute="trailing" constant="41" id="u3w-xp-X0Z"/>
+            </constraints>
             <connections>
+                <outlet property="btnWatch" destination="BiD-qd-gVD" id="Wtm-6h-PgF"/>
                 <outlet property="imageEpisode" destination="O8R-Dv-JeW" id="SEN-ou-JU1"/>
                 <outlet property="lblDate" destination="GnF-am-d5L" id="Bd9-7u-e11"/>
                 <outlet property="lblEpisode" destination="R62-aU-erf" id="8P1-sZ-Ywa"/>
-                <outlet property="lblTitle" destination="wut-dS-zsO" id="02C-RZ-edd"/>
+                <outlet property="lblNextEpisode" destination="eRa-Dt-7hD" id="J0z-3d-gbs"/>
+                <outlet property="lblTitle" destination="wut-dS-zsO" id="Ifc-pb-4aB"/>
             </connections>
             <point key="canvasLocation" x="34" y="7.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="watching_icon" width="16" height="16"/>
+    </resources>
 </document>

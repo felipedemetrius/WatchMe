@@ -30,6 +30,11 @@
 		B31E733B1E329D3E00D32DEE /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */; };
 		B31E733D1E33E07D00D32DEE /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */; };
 		B31E733F1E33E20B00D32DEE /* EpisodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E733E1E33E20B00D32DEE /* EpisodeRepository.swift */; };
+		B31E73411E3443CB00D32DEE /* SeasonsSerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73401E3443CB00D32DEE /* SeasonsSerieViewController.swift */; };
+		B31E73431E344BF200D32DEE /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73421E344BF200D32DEE /* SeasonModel.swift */; };
+		B31E73451E344D5D00D32DEE /* SeasonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73441E344D5D00D32DEE /* SeasonRepository.swift */; };
+		B31E73481E34585300D32DEE /* HeaderSeasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */; };
+		B31E73491E34585300D32DEE /* HeaderSeasonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */; };
 		B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E646E91E312A6800ECAB02 /* AppDelegate.swift */; };
 		B3E646EF1E312A6800ECAB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E646ED1E312A6800ECAB02 /* Main.storyboard */; };
 		B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3E646F01E312A6800ECAB02 /* Assets.xcassets */; };
@@ -86,6 +91,11 @@
 		B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
 		B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
 		B31E733E1E33E20B00D32DEE /* EpisodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeRepository.swift; sourceTree = "<group>"; };
+		B31E73401E3443CB00D32DEE /* SeasonsSerieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsSerieViewController.swift; sourceTree = "<group>"; };
+		B31E73421E344BF200D32DEE /* SeasonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
+		B31E73441E344D5D00D32DEE /* SeasonRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonRepository.swift; sourceTree = "<group>"; };
+		B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSeasonTableViewCell.swift; sourceTree = "<group>"; };
+		B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSeasonTableViewCell.xib; sourceTree = "<group>"; };
 		B3E646E61E312A6800ECAB02 /* WatchMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E646E91E312A6800ECAB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3E646EE1E312A6800ECAB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 			children = (
 				B31E73271E32856600D32DEE /* Xibs */,
 				B31E73201E3268D400D32DEE /* DetailSerieViewController.swift */,
+				B31E73401E3443CB00D32DEE /* SeasonsSerieViewController.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -184,6 +195,7 @@
 				B31E732F1E32979F00D32DEE /* NextEpisodeTableViewCell.xib */,
 				B31E73331E329AF800D32DEE /* MoreEpisodesTableViewCell.xib */,
 				B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */,
+				B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 				B31E732E1E32979F00D32DEE /* NextEpisodeTableViewCell.swift */,
 				B31E73321E329AF800D32DEE /* MoreEpisodesTableViewCell.swift */,
 				B31E73381E329D3E00D32DEE /* OverviewTableViewCell.swift */,
+				B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -302,6 +315,7 @@
 				B31E73101E3145E200D32DEE /* SerieModel.swift */,
 				B31E73161E3184FC00D32DEE /* ImageSerieModel.swift */,
 				B31E733C1E33E07D00D32DEE /* EpisodeModel.swift */,
+				B31E73421E344BF200D32DEE /* SeasonModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -312,6 +326,7 @@
 				B31E73121E31488A00D32DEE /* SerieRepository.swift */,
 				B31E73181E31857E00D32DEE /* ImageSerieRepository.swift */,
 				B31E733E1E33E20B00D32DEE /* EpisodeRepository.swift */,
+				B31E73441E344D5D00D32DEE /* SeasonRepository.swift */,
 			);
 			name = Repositories;
 			sourceTree = "<group>";
@@ -505,6 +520,7 @@
 				B31E73261E32855500D32DEE /* ImageDetailSerieTableViewCell.xib in Resources */,
 				B31E733B1E329D3E00D32DEE /* OverviewTableViewCell.xib in Resources */,
 				B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */,
+				B31E73491E34585300D32DEE /* HeaderSeasonTableViewCell.xib in Resources */,
 				B31E73351E329AF800D32DEE /* MoreEpisodesTableViewCell.xib in Resources */,
 				B3E646EF1E312A6800ECAB02 /* Main.storyboard in Resources */,
 				B31E732D1E3286D500D32DEE /* ActionsSerieTableViewCell.xib in Resources */,
@@ -589,6 +605,7 @@
 				B31E733D1E33E07D00D32DEE /* EpisodeModel.swift in Sources */,
 				B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */,
 				B31E73171E3184FC00D32DEE /* ImageSerieModel.swift in Sources */,
+				B31E73411E3443CB00D32DEE /* SeasonsSerieViewController.swift in Sources */,
 				B3E647231E312CF800ECAB02 /* DiscoverViewController.swift in Sources */,
 				B31E73191E31857E00D32DEE /* ImageSerieRepository.swift in Sources */,
 				B31E733A1E329D3E00D32DEE /* OverviewTableViewCell.swift in Sources */,
@@ -596,10 +613,13 @@
 				B3E6472F1E312F7300ECAB02 /* WatchingViewController.swift in Sources */,
 				B31E73151E315C6B00D32DEE /* StringExtension.swift in Sources */,
 				B31E73341E329AF800D32DEE /* MoreEpisodesTableViewCell.swift in Sources */,
+				B31E73451E344D5D00D32DEE /* SeasonRepository.swift in Sources */,
+				B31E73481E34585300D32DEE /* HeaderSeasonTableViewCell.swift in Sources */,
 				B31E73111E3145E200D32DEE /* SerieModel.swift in Sources */,
 				B31E73131E31488A00D32DEE /* SerieRepository.swift in Sources */,
 				B31E733F1E33E20B00D32DEE /* EpisodeRepository.swift in Sources */,
 				B31E730D1E31416C00D32DEE /* SerieCollectionViewCell.swift in Sources */,
+				B31E73431E344BF200D32DEE /* SeasonModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

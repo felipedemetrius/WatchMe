@@ -33,8 +33,8 @@ class ActionsSerieTableViewCell: UITableViewCell {
         
         self.serie = serie
         
-        lblPercent.text = "0%"
-        lblProgress.text = "0/" + serie.aired_episodes.description
+        lblPercent.text = progress().description + "%"
+        lblProgress.text = serie.watchedEpisodes.count.description + "/" + serie.aired_episodes.description
         
         if serie.watching {
             btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
@@ -48,17 +48,20 @@ class ActionsSerieTableViewCell: UITableViewCell {
             btnWishlist.setImage(UIImage(named: "wishlist_add"), for: UIControlState.normal)
         }
 
-        
+    }
+    
+    private func progress()-> Int{
+        return serie.watchedEpisodes.count * 100 / serie.aired_episodes
     }
 
     @IBAction func wishlist(_ sender: UIButton) {
         
         if serie.wishlist {
-            serie.save(value: false, key: "wishlist")
+            serie.update(value: false, key: "wishlist")
             btnWishlist.setImage(UIImage(named: "wishlist_add"), for: UIControlState.normal)
             
         } else {
-            serie.save(value: true, key: "wishlist")
+            serie.update(value: true, key: "wishlist")
             btnWishlist.setImage(UIImage(named: "wishlist_remove"), for: UIControlState.normal)
         }
 
@@ -67,11 +70,13 @@ class ActionsSerieTableViewCell: UITableViewCell {
     @IBAction func watch(_ sender: UIButton) {
         
         if serie.watching {
-            serie.save(value: false, key: "watching")
+            serie.update(value: false, key: "watching")
+            serie.removeAllEpisodes()
+            configureCell(serie: serie)
             btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
-
+            
         } else {
-            serie.save(value: true, key: "watching")
+            serie.remove()
             btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
         }
         

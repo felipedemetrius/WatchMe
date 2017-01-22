@@ -20,7 +20,7 @@ enum TraktUrl: String{
     case Trending    = "shows/trending/?extended=full"
     case Search      = "search/show?extended=full"
     case NextEpisode = "next_episode?extended=full"
-    
+    case Seasons     = "seasons?extended=episodes"
     
     var description: String{
         switch self{
@@ -126,17 +126,22 @@ class SerieRepository{
     
     class func getWatching() -> [SerieModel]? {
         let realm = try! Realm()
-        
         let series = realm.objects(SerieModel.self).filter("watching == true")
         return series.reversed()
     }
     
     class func getWishlist() -> [SerieModel]? {
         let realm = try! Realm()
-        
         let series = realm.objects(SerieModel.self).filter("wishlist == true")
         return series.reversed()
     }
 
+    class func getEpisodeWatched(slug : String, target: String) -> EpisodeModel? {
+        let realm = try! Realm()
+        return realm.objects(SerieModel.self).filter("slug == '\(slug)'").first?.watchedEpisodes.first(where: { episode -> Bool in
+            return episode.target == target
+        })
+    }
+    
 }
 

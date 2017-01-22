@@ -11,14 +11,17 @@ import Kingfisher
 
 class NextEpisodeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var btnWatch: UIButton!
+    
     @IBOutlet weak var imageEpisode: UIImageView!
     
+    @IBOutlet weak var lblNextEpisode: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
-    
     @IBOutlet weak var lblEpisode: UILabel!
-    
     @IBOutlet weak var lblDate: UILabel!
     
+    var episode : EpisodeModel!
+    var serie: SerieModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +34,9 @@ class NextEpisodeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(episode: EpisodeModel?){
+    func configureNextEpisode(episode: EpisodeModel?){
+        
+        lblNextEpisode.text = "Next Episode"
         
         guard let episode = episode else {
             lblTitle.text = "Unavailable"
@@ -40,11 +45,11 @@ class NextEpisodeTableViewCell: UITableViewCell {
         
         lblTitle.text = episode.title
         
-        if let season = episode.season, let number = episode.number {
-            lblEpisode.text = "S" + season.description + "E" + number.description
-        }
-    
+        lblEpisode.text = episode.target
+        
         lblDate.text = episode.first_aired
+        
+        btnWatch.isHidden = true
         
         ImageSerieRepository.getImageSerie(imdb: episode.imdb ?? "") {[weak self] result in
             
@@ -52,4 +57,40 @@ class NextEpisodeTableViewCell: UITableViewCell {
         }
     }
     
+    func configureEpisode(episode: EpisodeModel, serie: SerieModel){
+        
+        self.episode = episode
+        self.serie = serie
+        
+        lblTitle.text = episode.title
+        
+        lblEpisode.text = episode.target
+        
+        btnWatch.isHidden = false
+        
+        ImageSerieRepository.getImageSerie(imdb: episode.imdb ?? "") {[weak self] result in
+            
+            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+        }
+
+        if SerieRepository.getEpisodeWatched(slug: serie.slug ?? "", target: episode.target ?? "") != nil {
+            btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
+        } else {
+            btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
+        }
+
+    }
+    
+    @IBAction func watch(_ sender: UIButton) {
+        
+        if SerieRepository.getEpisodeWatched(slug: serie.slug ?? "", target: episode.target ?? "") == nil {
+            
+            serie.addEpisode(episode: episode)
+            btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
+        } else {
+            serie.removeEpisode(episode: episode)
+            btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
+        }
+        
+    }
 }

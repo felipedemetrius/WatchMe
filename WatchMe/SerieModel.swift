@@ -11,7 +11,6 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-
 class SerieModel: Object, Mappable {
     
     dynamic var title: String?
@@ -27,6 +26,7 @@ class SerieModel: Object, Mappable {
 
     dynamic var watching = false
     dynamic var wishlist = false
+    var watchedEpisodes = List<EpisodeModel>()
     
     required convenience init?(map: Map) {
         self.init()
@@ -53,7 +53,7 @@ class SerieModel: Object, Mappable {
 
 extension SerieModel {
     
-    func save(value: Any?, key: String){
+    func update(value: Any?, key: String){
         
         let realm = try! Realm()
         
@@ -74,4 +74,54 @@ extension SerieModel {
 
     }
     
+    func addEpisode(episode: EpisodeModel){
+        
+        let realm = try! Realm()
+        
+        if SerieRepository.getLocal(slug: self.slug ?? "") == nil {
+            
+            try! realm.write {
+                realm.add(self)
+                realm.add(episode)
+                self.watchedEpisodes.append(episode)
+                self.watching = true
+            }
+            
+        } else {
+            try! realm.write {
+                realm.add(episode)
+                self.watchedEpisodes.append(episode)
+                self.watching = true
+            }
+        }
+    }
+    
+    func removeEpisode(episode: EpisodeModel){
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(episode)
+        }
+        
+    }
+    
+    func removeAllEpisodes(){
+        
+        let realm = try! Realm()
+        try! realm.write {
+            self.watchedEpisodes.removeAll()
+        }
+            
+    }
+
+    func remove(){
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(self)
+        }
+        
+    }
+
+
 }

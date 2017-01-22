@@ -40,6 +40,11 @@ class DetailSerieViewController: UIViewController {
         tableView.layoutMargins = UIEdgeInsets.zero
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     private func getLocalSerie(){
         if let serieLocal = SerieRepository.getLocal(slug: serie.slug ?? "") {
             serie = serieLocal
@@ -82,15 +87,18 @@ class DetailSerieViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "goToSeasons" {
+            let vc = segue.destination as? SeasonsSerieViewController
+            if let serie = sender as? SerieModel {
+                vc?.serie = serie
+            }
+        }
     }
-    */
+ 
 
 }
 
@@ -104,9 +112,9 @@ extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        if indexPath.row == CellIndex.Address.description {
-//            goToAddress()
-//        }
+        if indexPath.row == CellIndex.MoreEpisodes.description {
+            performSegue(withIdentifier: "goToSeasons", sender: serie)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -168,7 +176,7 @@ extension DetailSerieViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
         
-        cell?.configureCell(episode: nextEpisode)
+        cell?.configureNextEpisode(episode: nextEpisode)
         
         return cell!
     }
