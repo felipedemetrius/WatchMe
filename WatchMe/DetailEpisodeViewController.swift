@@ -18,7 +18,9 @@ class DetailEpisodeViewController: UIViewController {
     enum CellIndex: Int {
         
         case Image = 0
-        case Overview = 1
+        case Action = 1
+        case Infos = 2
+        case Overview = 3
         
         var description : Int { return rawValue }
     }
@@ -43,6 +45,14 @@ class DetailEpisodeViewController: UIViewController {
     
     private func configureEpisode(){
         
+        EpisodeRepository.getEpisodeDetail(slug: serie.slug ?? "", season: episode.season, episode: episode.number) { [weak self] episode in
+            
+            if let episode = episode {
+                self?.episode = episode
+                self?.tableView.reloadData()
+            }
+            
+        }
     }
     
     private func configureTableView(){
@@ -57,6 +67,10 @@ class DetailEpisodeViewController: UIViewController {
         tableView.register(UINib(nibName: "ImageDetailSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageDetailSerieTableViewCell")
         
         tableView.register(UINib(nibName: "OverviewTableViewCell", bundle: nil), forCellReuseIdentifier: "OverviewTableViewCell")
+       
+        tableView.register(UINib(nibName: "ActionEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "ActionEpisodeTableViewCell")
+        
+        tableView.register(UINib(nibName: "InfosEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "InfosEpisodeTableViewCell")
     }
 
 
@@ -83,7 +97,7 @@ extension DetailEpisodeViewController : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return 4
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -95,6 +109,8 @@ extension DetailEpisodeViewController : UITableViewDelegate, UITableViewDataSour
         switch indexPath.row {
             
         case CellIndex.Image.description:   return getImageCell(tableView: tableView, indexPath: indexPath)
+        case CellIndex.Action.description: return getActionCell(tableView: tableView, indexPath: indexPath)
+        case CellIndex.Infos.description: return getInfosCell(tableView: tableView, indexPath: indexPath)
         case CellIndex.Overview.description: return getOverviewCell(tableView: tableView, indexPath: indexPath)
             
         default:
@@ -128,15 +144,23 @@ extension DetailEpisodeViewController {
         return cell!
     }
     
-    func getActionsCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getActionCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsSerieTableViewCell", for: indexPath) as? ActionsSerieTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActionEpisodeTableViewCell", for: indexPath) as? ActionEpisodeTableViewCell
         
-        cell?.configureCell(serie: serie)
+        cell?.configureCell(serie: serie, episode: episode)
         
         return cell!
     }
     
+    func getInfosCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InfosEpisodeTableViewCell", for: indexPath) as? InfosEpisodeTableViewCell
+        
+        cell?.configureCell(episode: episode)
+        
+        return cell!
+    }
     
     func getOverviewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         

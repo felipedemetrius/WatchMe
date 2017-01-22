@@ -17,11 +17,14 @@ enum TraktUrl: String{
     
     case Base        = "https://api.trakt.tv/"
     case Shows       = "shows/"
+    case Seasons     = "seasons/"
+    case Episodes    = "episodes/"
+    case Full        = "?extended=full"
     case Trending    = "shows/trending/?extended=full"
     case Search      = "search/show?extended=full"
     case NextEpisode = "next_episode?extended=full"
-    case Seasons     = "seasons?extended=episodes"
-    
+    case SeasonsFull = "seasons?extended=episodes"
+        
     var description: String{
         switch self{
         case .Base:

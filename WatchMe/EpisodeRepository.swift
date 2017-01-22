@@ -23,6 +23,16 @@ class EpisodeRepository{
             
             completionHandler(response.result.value)
         }
+    }
+    
+    class func getEpisodeDetail(slug: String, season: Int, episode: Int, completionHandler: @escaping (EpisodeModel?) -> ()){
+        
+        let url = TraktUrl.Shows.description + slug + "/" + TraktUrl.Seasons.rawValue + season.description + "/" + TraktUrl.Episodes.rawValue + episode.description + TraktUrl.Full.rawValue
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseObject { (response: DataResponse<EpisodeModel>) in
+            
+            completionHandler(response.result.value)
+        }
         
     }
 

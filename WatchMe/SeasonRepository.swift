@@ -17,7 +17,7 @@ class SeasonRepository{
     
     class func getSeasons(slug: String, encoding: ParameterEncoding = URLEncoding.queryString, completionHandler: @escaping ([SeasonModel]?) -> ()){
         
-        let url = TraktUrl.Shows.description + slug + "/" + TraktUrl.Seasons.rawValue
+        let url = TraktUrl.Shows.description + slug + "/" + TraktUrl.SeasonsFull.rawValue
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: encoding, headers: TraktCredentials.header).responseArray { (response: DataResponse<[SeasonModel]>) in
             

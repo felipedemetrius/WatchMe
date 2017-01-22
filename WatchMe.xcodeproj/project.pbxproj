@@ -36,6 +36,10 @@
 		B31E73481E34585300D32DEE /* HeaderSeasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */; };
 		B31E73491E34585300D32DEE /* HeaderSeasonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */; };
 		B31E734B1E34966900D32DEE /* DetailEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E734A1E34966900D32DEE /* DetailEpisodeViewController.swift */; };
+		B31E734E1E3523E700D32DEE /* ActionEpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E734C1E3523E700D32DEE /* ActionEpisodeTableViewCell.swift */; };
+		B31E734F1E3523E700D32DEE /* ActionEpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E734D1E3523E700D32DEE /* ActionEpisodeTableViewCell.xib */; };
+		B31E73551E352F3E00D32DEE /* InfosEpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31E73531E352F3E00D32DEE /* InfosEpisodeTableViewCell.xib */; };
+		B31E73571E3530AB00D32DEE /* InfosEpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E73561E3530AB00D32DEE /* InfosEpisodeTableViewCell.swift */; };
 		B3E646EA1E312A6800ECAB02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E646E91E312A6800ECAB02 /* AppDelegate.swift */; };
 		B3E646EF1E312A6800ECAB02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E646ED1E312A6800ECAB02 /* Main.storyboard */; };
 		B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3E646F01E312A6800ECAB02 /* Assets.xcassets */; };
@@ -98,6 +102,10 @@
 		B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSeasonTableViewCell.swift; sourceTree = "<group>"; };
 		B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSeasonTableViewCell.xib; sourceTree = "<group>"; };
 		B31E734A1E34966900D32DEE /* DetailEpisodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEpisodeViewController.swift; sourceTree = "<group>"; };
+		B31E734C1E3523E700D32DEE /* ActionEpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionEpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		B31E734D1E3523E700D32DEE /* ActionEpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionEpisodeTableViewCell.xib; sourceTree = "<group>"; };
+		B31E73531E352F3E00D32DEE /* InfosEpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfosEpisodeTableViewCell.xib; sourceTree = "<group>"; };
+		B31E73561E3530AB00D32DEE /* InfosEpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfosEpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		B3E646E61E312A6800ECAB02 /* WatchMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E646E91E312A6800ECAB02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3E646EE1E312A6800ECAB02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -199,6 +207,8 @@
 				B31E73331E329AF800D32DEE /* MoreEpisodesTableViewCell.xib */,
 				B31E73391E329D3E00D32DEE /* OverviewTableViewCell.xib */,
 				B31E73471E34585300D32DEE /* HeaderSeasonTableViewCell.xib */,
+				B31E734D1E3523E700D32DEE /* ActionEpisodeTableViewCell.xib */,
+				B31E73531E352F3E00D32DEE /* InfosEpisodeTableViewCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -212,6 +222,8 @@
 				B31E73321E329AF800D32DEE /* MoreEpisodesTableViewCell.swift */,
 				B31E73381E329D3E00D32DEE /* OverviewTableViewCell.swift */,
 				B31E73461E34585300D32DEE /* HeaderSeasonTableViewCell.swift */,
+				B31E734C1E3523E700D32DEE /* ActionEpisodeTableViewCell.swift */,
+				B31E73561E3530AB00D32DEE /* InfosEpisodeTableViewCell.swift */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -517,11 +529,13 @@
 				B3E647261E312E2D00ECAB02 /* Wishlist.storyboard in Resources */,
 				B3E646F41E312A6800ECAB02 /* LaunchScreen.storyboard in Resources */,
 				B31E730E1E31416C00D32DEE /* SerieCollectionViewCell.xib in Resources */,
+				B31E734F1E3523E700D32DEE /* ActionEpisodeTableViewCell.xib in Resources */,
 				B3E647201E312BAF00ECAB02 /* Discover.storyboard in Resources */,
 				B3E6472C1E312F3000ECAB02 /* Watching.storyboard in Resources */,
 				B31E73311E3297A000D32DEE /* NextEpisodeTableViewCell.xib in Resources */,
 				B31E73261E32855500D32DEE /* ImageDetailSerieTableViewCell.xib in Resources */,
 				B31E733B1E329D3E00D32DEE /* OverviewTableViewCell.xib in Resources */,
+				B31E73551E352F3E00D32DEE /* InfosEpisodeTableViewCell.xib in Resources */,
 				B3E646F11E312A6800ECAB02 /* Assets.xcassets in Resources */,
 				B31E73491E34585300D32DEE /* HeaderSeasonTableViewCell.xib in Resources */,
 				B31E73351E329AF800D32DEE /* MoreEpisodesTableViewCell.xib in Resources */,
@@ -621,9 +635,11 @@
 				B31E73111E3145E200D32DEE /* SerieModel.swift in Sources */,
 				B31E73131E31488A00D32DEE /* SerieRepository.swift in Sources */,
 				B31E733F1E33E20B00D32DEE /* EpisodeRepository.swift in Sources */,
+				B31E73571E3530AB00D32DEE /* InfosEpisodeTableViewCell.swift in Sources */,
 				B31E734B1E34966900D32DEE /* DetailEpisodeViewController.swift in Sources */,
 				B31E730D1E31416C00D32DEE /* SerieCollectionViewCell.swift in Sources */,
 				B31E73431E344BF200D32DEE /* SeasonModel.swift in Sources */,
+				B31E734E1E3523E700D32DEE /* ActionEpisodeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

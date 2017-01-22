@@ -19,8 +19,14 @@ class SeasonsSerieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = serie.title
         configureTableView()
         configureDatasource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     private func configureDatasource(){
