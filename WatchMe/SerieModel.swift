@@ -82,15 +82,23 @@ extension SerieModel {
             
             try! realm.write {
                 realm.add(self)
-                realm.add(episode)
-                self.watchedEpisodes.append(episode)
+                
+                if let episodeLocal = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
+                    self.watchedEpisodes.append(episodeLocal)
+                } else {
+                    self.watchedEpisodes.append(episode)
+                }
                 self.watching = true
             }
             
         } else {
             try! realm.write {
-                realm.add(episode)
-                self.watchedEpisodes.append(episode)
+                if let episodeLocal = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
+                    self.watchedEpisodes.append(episodeLocal)
+                } else {
+                    self.watchedEpisodes.append(episode)
+                }
+                
                 self.watching = true
             }
         }
@@ -102,7 +110,8 @@ extension SerieModel {
             
             let realm = try! Realm()
             try! realm.write {
-                realm.delete(episode)
+                guard let index = self.watchedEpisodes.index(of: episode) else {return}
+                self.watchedEpisodes.remove(objectAtIndex: index)
             }
         }
         
