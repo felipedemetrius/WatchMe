@@ -41,6 +41,7 @@
                     <connections>
                         <outlet property="tableView" destination="uwP-r1-urI" id="I9p-DN-upV"/>
                         <segue destination="Pv4-Rr-csb" kind="show" identifier="goToSeasons" id="z0z-rF-CyS"/>
+                        <segue destination="052-Tn-xcP" kind="show" identifier="goToDetailEpisode" id="spQ-yO-zxW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCp-nM-SIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,11 +79,52 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="xgn-cZ-gkx" id="imJ-iP-Wri"/>
+                        <segue destination="052-Tn-xcP" kind="show" identifier="goToDetailEpisode" id="2Wk-Z0-L3K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLi-Et-Lcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="588" y="166.8665667166417"/>
         </scene>
+        <!--Detail Episode View Controller-->
+        <scene sceneID="M2H-rS-cuH">
+            <objects>
+                <viewController storyboardIdentifier="DetailEpisodeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="052-Tn-xcP" customClass="DetailEpisodeViewController" customModule="WatchMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nSv-Nt-FAz"/>
+                        <viewControllerLayoutGuide type="bottom" id="nVH-Jt-JQe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u9L-uQ-Kto">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eD4-qM-1l4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="052-Tn-xcP" id="kcf-7u-zo4"/>
+                                    <outlet property="delegate" destination="052-Tn-xcP" id="QA9-6g-Olb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eD4-qM-1l4" firstAttribute="leading" secondItem="u9L-uQ-Kto" secondAttribute="leading" id="N0E-Of-ucs"/>
+                            <constraint firstItem="nVH-Jt-JQe" firstAttribute="top" secondItem="eD4-qM-1l4" secondAttribute="bottom" id="hdC-SE-4Xo"/>
+                            <constraint firstItem="eD4-qM-1l4" firstAttribute="top" secondItem="u9L-uQ-Kto" secondAttribute="top" id="nP2-Jo-WDZ"/>
+                            <constraint firstAttribute="trailing" secondItem="eD4-qM-1l4" secondAttribute="trailing" id="okz-hO-Sqe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="eD4-qM-1l4" id="xcC-WF-4nR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htp-Ik-Hcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269.60000000000002" y="895.50224887556226"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="spQ-yO-zxW"/>
+    </inferredMetricsTieBreakers>
 </document>

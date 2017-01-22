@@ -53,15 +53,17 @@ class SeasonsSerieViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "goToDetailEpisode" {
+            let vc = segue.destination as? DetailEpisodeViewController
+            if let episode = sender as? EpisodeModel {
+                vc?.serie = serie
+                vc?.episode = episode
+            }
+        }
     }
-    */
 
 }
 
@@ -76,6 +78,13 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let seasons = self.seasons else {return }
+        
+        let season  = seasons[indexPath.section]
+        
+        guard let episode = season.episodes?[indexPath.row] else {return }
+
+        performSegue(withIdentifier: "goToDetailEpisode", sender: episode)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

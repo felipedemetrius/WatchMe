@@ -1,38 +1,34 @@
 //
-//  DetailSerieViewController.swift
+//  DetailEpisodeViewController.swift
 //  WatchMe
 //
-//  Created by Felipe Silva  on 1/20/17.
+//  Created by Felipe Silva  on 1/22/17.
 //  Copyright © 2017 Felipe Silva . All rights reserved.
 //
 
 import UIKit
 
-class DetailSerieViewController: UIViewController {
+class DetailEpisodeViewController: UIViewController {
 
-    enum CellIndex: Int {
-        
-        case Image = 0
-        case Actions = 1
-        case NextEpisode = 2
-        case MoreEpisodes = 3
-        case Overview = 4
-        
-        var description : Int { return rawValue }
-    }
-    
     @IBOutlet weak var tableView: UITableView!
     
     var serie : SerieModel!
-    var nextEpisode : EpisodeModel?
+    var episode : EpisodeModel!
+    
+    enum CellIndex: Int {
+        
+        case Image = 0
+        case Overview = 1
+        
+        var description : Int { return rawValue }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = serie.title
         configureTableView()
-        configureNextEpisode()
-        getLocalSerie()
+        configureEpisode()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,21 +41,10 @@ class DetailSerieViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func getLocalSerie(){
-        if let serieLocal = SerieRepository.getLocal(slug: serie.slug ?? "") {
-            serie = serieLocal
-            tableView.reloadData()
-        }
+    private func configureEpisode(){
+        
     }
     
-    private func configureNextEpisode(){
-        
-        EpisodeRepository.getNextEpisode(slug: serie.slug ?? "") { [weak self] result in
-            self?.nextEpisode = result
-            self?.tableView.reloadData()
-        }
-    }
-
     private func configureTableView(){
         
         if let topItem = navigationController?.navigationBar.topItem {
@@ -69,80 +54,49 @@ class DetailSerieViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 175
         
-        tableView.register(UINib(nibName: "ActionsSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ActionsSerieTableViewCell")
-        
         tableView.register(UINib(nibName: "ImageDetailSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageDetailSerieTableViewCell")
         
-        tableView.register(UINib(nibName: "NextEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "NextEpisodeTableViewCell")
-
-        tableView.register(UINib(nibName: "MoreEpisodesTableViewCell", bundle: nil), forCellReuseIdentifier: "MoreEpisodesTableViewCell")
-
         tableView.register(UINib(nibName: "OverviewTableViewCell", bundle: nil), forCellReuseIdentifier: "OverviewTableViewCell")
-
     }
-    
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    
+    /*
     // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToSeasons" {
-            let vc = segue.destination as? SeasonsSerieViewController
-            if let serie = sender as? SerieModel {
-                vc?.serie = serie
-            }
-        } else if segue.identifier == "goToDetailEpisode" {
-            let vc = segue.destination as? DetailEpisodeViewController
-            if let episode = sender as? EpisodeModel {
-                vc?.serie = serie
-                vc?.episode = episode
-            }
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
- 
+    */
 
 }
 
-extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource {
+extension DetailEpisodeViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == CellIndex.MoreEpisodes.description {
-            performSegue(withIdentifier: "goToSeasons", sender: serie)
-        }
-        
-        if indexPath.row == CellIndex.NextEpisode.description {
-            if let episode = nextEpisode {
-                performSegue(withIdentifier: "goToDetailEpisode", sender: episode)
-            }
-        }
+        return 2
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
             
         case CellIndex.Image.description:   return getImageCell(tableView: tableView, indexPath: indexPath)
-        case CellIndex.Actions.description: return getActionsCell(tableView: tableView, indexPath: indexPath)
-        case CellIndex.NextEpisode.description: return getNextEpisodeCell(tableView: tableView, indexPath: indexPath)
-        case CellIndex.MoreEpisodes.description: return getMoreEpisodesCell(tableView: tableView, indexPath: indexPath)
         case CellIndex.Overview.description: return getOverviewCell(tableView: tableView, indexPath: indexPath)
-
+            
         default:
             return UITableViewCell()
         }
@@ -152,7 +106,6 @@ extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 { return 140 }
-        if indexPath.row == 2 { return 175 }
         return UITableViewAutomaticDimension
     }
     
@@ -161,16 +114,16 @@ extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
     }
-
+    
 }
 
-extension DetailSerieViewController {
+extension DetailEpisodeViewController {
     
     func getImageCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ImageDetailSerieTableViewCell", for: indexPath) as? ImageDetailSerieTableViewCell
-                
-        cell?.configureImage(imdb: serie.imdb)
+        
+        cell?.configureImage(imdb: episode?.imdb ?? "")
         
         return cell!
     }
@@ -184,30 +137,15 @@ extension DetailSerieViewController {
         return cell!
     }
     
-    func getNextEpisodeCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
-        
-        cell?.configureNextEpisode(episode: nextEpisode)
-        
-        return cell!
-    }
-    
-    func getMoreEpisodesCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MoreEpisodesTableViewCell", for: indexPath) as? MoreEpisodesTableViewCell
-        return cell!
-    }
     
     func getOverviewCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OverviewTableViewCell", for: indexPath) as? OverviewTableViewCell
         
-        cell?.label.text = serie.overview
+        cell?.label.text = episode.overview
         
         return cell!
     }
     
 }
-
 
