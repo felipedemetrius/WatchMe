@@ -52,6 +52,7 @@ class ActionsSerieTableViewCell: UITableViewCell {
         if serie.watching {
             
             serie.update(value: false, key: "watching")
+            serie.removeAllEpisodes()
             btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
 
         } else {

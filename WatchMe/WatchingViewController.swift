@@ -47,13 +47,7 @@ class WatchingViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         
         collectionView.register(UINib(nibName: "SerieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SerieCollectionViewCell")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    }    
 
     
     // MARK: - Navigation

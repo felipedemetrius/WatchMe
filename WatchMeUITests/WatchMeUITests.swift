@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import WatchMe
 
 class WatchMeUITests: XCTestCase {
         
@@ -28,9 +29,114 @@ class WatchMeUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testUI() {
+        
+        var app = XCUIApplication()
+        
+        sleep(3)
+        
+        app = testDiscoverVC(app: app)
+        
+        sleep(3)
+        
+        app = testSearchVC(app: app)
+        
+        sleep(1)
+        
+        app = testDetailSerieVC(app: app)
+        
+        sleep(3)
+        
+        app = testSeaonsSerieVC(app: app)
+        
+        sleep(1)
+        
+        app = testProfileVC(app: app)
+
+        sleep(1)
+        
+        app = testWatchingVC(app: app)
+
+    }
+    
+    private func testDiscoverVC(app : XCUIApplication) -> XCUIApplication{
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
+        
+        
+        app.navigationBars["Trending"].buttons["Search"].tap()
+        app.searchFields["Search Series"].typeText("house")
+        app.keyboards.buttons["Search"].tap()
+
+        return app
+    }
+    
+    private func testSearchVC(app : XCUIApplication) -> XCUIApplication{
+                
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeDown()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeDown()
+
+        app.collectionViews.cells.element(boundBy: 1).tap()
+        
+        return app
+    }
+    
+    private func testDetailSerieVC(app : XCUIApplication)-> XCUIApplication{
+        
+        app.tables.cells.element(boundBy: 3).tap()
+        
+        return app
+    }
+    
+    private func testSeaonsSerieVC(app : XCUIApplication)-> XCUIApplication{
+        
+        
+        app.tables.cells.element(boundBy: 0).buttons["watching icon"].tap()
+        app.tables.cells.element(boundBy: 0).buttons["nowatching icon"].tap()
+        app.tables.cells.element(boundBy: 0).buttons["watching icon"].tap()
+
+        
+        app.tables.cells.element(boundBy: 0).tap()
+        
+        return app
+    }
+    
+    private func testWatchingVC(app : XCUIApplication)-> XCUIApplication{
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Watching"].tap()
+
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
+        
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeDown()
+        
+        app.collectionViews.cells.element(boundBy: 0).tap()
+        
+        app.tables.cells.element(boundBy: 1).buttons["nowatching icon"].tap()
+        
+        
+        return app
+    }
+    
+    private func testProfileVC(app : XCUIApplication)-> XCUIApplication{
+        
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.buttons["Profile"].tap()
+        
+        app.navigationBars["WatchMe.ProfileView"].buttons["NextUp Episodes"].tap()
+
+        sleep(2)
+        
+        app.tables.cells.element(boundBy: 0).tap()
+
+        return app
     }
     
 }

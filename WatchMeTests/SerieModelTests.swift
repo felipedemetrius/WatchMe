@@ -53,6 +53,10 @@ class SerieModelTests: XCTestCase {
                         serie.addEpisode(episode: episode)
                         serie.removeEpisode(episode: episode)
                         serie.addEpisode(episode: episode)
+                        
+                        if let serie = SerieRepository.getLocal(slug: "the-oa") {
+                            serie.remove()
+                        }
                     }
                     
                     wait.fulfill()
@@ -61,6 +65,7 @@ class SerieModelTests: XCTestCase {
             }
             
         }
+                
         waitForExpectations(timeout: 6.0, handler: nil)
     }
         

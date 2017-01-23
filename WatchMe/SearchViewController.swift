@@ -55,13 +55,6 @@ class SearchViewController: UIViewController {
         collectionView.register(UINib(nibName: "SerieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SerieCollectionViewCell")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToDetailSerie" {
@@ -93,9 +86,6 @@ extension SearchViewController : UIScrollViewDelegate {
         
         let maximumOffset = scrollView.contentSize.height - self.collectionView.frame.size.height
         
-        if dataSource.count == 0 {
-            return
-        }
         
         if  maximumOffset - scrollView.contentOffset.y <= 0  {
             

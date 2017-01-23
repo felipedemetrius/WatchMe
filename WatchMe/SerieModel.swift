@@ -122,6 +122,15 @@ extension SerieModel {
         
     }
     
+    func removeAllEpisodes(){
+        let realm = try! Realm()
+        
+        try! realm.write {
+            self.watchedEpisodes.removeAll()
+        }
+
+    }
+    
     func remove(){
         
         let realm = try! Realm()

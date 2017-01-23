@@ -76,7 +76,7 @@ class SerieRepositoryTests: XCTestCase {
     }
     
     func testGetSlugs(){
-        XCTAssertNotNil(SerieRepository.getSlugsLocal())
+        XCTAssertNil(SerieRepository.getSlugsLocal())
     }
     
     func testSeriesWithEpisodes(){
