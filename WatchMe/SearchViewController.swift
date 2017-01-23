@@ -29,10 +29,7 @@ class SearchViewController: UIViewController {
     
     fileprivate func configureDataSource(query: String){
         
-        var parameters = Parameters()
-        parameters["query"] = query
-        
-        SerieRepository.searchSeries(parameters: parameters, query: query, completionHandler: {[weak self] series in
+        SerieRepository.searchSeries(text: query, completionHandler: {[weak self] series in
             
             if let series = series {
                 self?.dataSource = series
@@ -83,6 +80,7 @@ extension SearchViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         searchBar.resignFirstResponder()
         configureDataSource(query: searchBar.text ?? "")
+        textSearch = searchBar.text ?? ""
     }
     
 }
@@ -101,10 +99,7 @@ extension SearchViewController : UIScrollViewDelegate {
         
         if  maximumOffset - scrollView.contentOffset.y <= 0  {
             
-            var parameters = Parameters()
-            parameters["query"] = searchBar.text
-            
-            SerieRepository.nextSeries(parameters: parameters, completionHandler: {[weak self] series in
+            SerieRepository.nextSearch(text: textSearch, completionHandler: {[weak self] series in
                 
                 if let seriess = series, seriess.count > 0 {
                     self?.dataSource += seriess

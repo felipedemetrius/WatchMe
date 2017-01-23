@@ -67,27 +67,28 @@ class WrapperShow<T: Mappable>: Mappable {
 
 class SerieRepository{
     
-    private static var page = 1
-    private static var lastUrl: String!
+    private static var pageTrending = 1
+    private static var pageSearch = 1
     
-    class func getSeriesTrending(parameters: [String:AnyObject]? = nil, encoding: ParameterEncoding = JSONEncoding.prettyPrinted, completionHandler: @escaping ([SerieModel]?) -> ()){
+    class func getSeriesTrending(completionHandler: @escaping ([SerieModel]?) -> ()){
         
-        Alamofire.request(TraktUrl.Trending.description, method: .get, parameters: parameters, encoding: encoding, headers: TraktCredentials.header).responseJSON { response in
+        Alamofire.request(TraktUrl.Trending.description, method: .get, parameters: nil, encoding: JSONEncoding.prettyPrinted, headers: TraktCredentials.header).responseJSON { response in
             
-            self.lastUrl = TraktUrl.Trending.description
-            self.page = 1
+            self.pageTrending = 1
             
             completionHandler(wrapperTrendingSerie(value: response.result.value))
         }
         
     }
     
-    class func searchSeries(parameters: Parameters? = nil, query : String, completionHandler: @escaping ([SerieModel]?) -> ()){
+    class func searchSeries(text : String, completionHandler: @escaping ([SerieModel]?) -> ()){
+        
+        var parameters = Parameters()
+        parameters["query"] = text
         
         Alamofire.request(TraktUrl.Search.description, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseJSON { response in
             
-            self.lastUrl = TraktUrl.Search.description
-            self.page = 1
+            self.pageSearch = 1
             
             completionHandler(wrapperTrendingSerie(value: response.result.value))
         }
@@ -108,14 +109,28 @@ class SerieRepository{
     }
 
     
-    class func nextSeries(parameters: Parameters? = nil, completionHandler: @escaping ([SerieModel]?) -> ()){
+    class func nextTrending(completionHandler: @escaping ([SerieModel]?) -> ()){
         
-        page += 1
+        pageTrending += 1
         
         var parameters = Parameters()
-        parameters["page"] = page
+        parameters["page"] = pageTrending
 
-        Alamofire.request(lastUrl, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseJSON { response in
+        Alamofire.request(TraktUrl.Trending.description, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseJSON { response in
+            
+            completionHandler(wrapperTrendingSerie(value: response.result.value))
+        }
+    }
+    
+    class func nextSearch(text: String, completionHandler: @escaping ([SerieModel]?) -> ()){
+        
+        pageSearch += 1
+        
+        var parameters = Parameters()
+        parameters["query"] = text
+        parameters["page"] = pageSearch
+        
+        Alamofire.request(TraktUrl.Search.description, method: .get, parameters: parameters, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseJSON { response in
             
             completionHandler(wrapperTrendingSerie(value: response.result.value))
         }

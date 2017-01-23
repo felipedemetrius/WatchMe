@@ -1,5 +1,5 @@
 //
-//  ImageSerieModel.swift
+//  ImageModel.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/19/17.
@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 
-class ImageSerieModel: Mappable {
+class ImageModel: Mappable {
 
     var imageUrl: String?
     

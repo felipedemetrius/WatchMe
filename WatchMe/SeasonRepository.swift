@@ -15,11 +15,11 @@ import ObjectMapper_Realm
 
 class SeasonRepository{
     
-    class func getSeasons(slug: String, encoding: ParameterEncoding = URLEncoding.queryString, completionHandler: @escaping ([SeasonModel]?) -> ()){
+    class func getSeasons(slug: String, completionHandler: @escaping ([SeasonModel]?) -> ()){
         
         let url = TraktUrl.Shows.description + slug + "/" + TraktUrl.SeasonsFull.rawValue
         
-        Alamofire.request(url, method: .get, parameters: nil, encoding: encoding, headers: TraktCredentials.header).responseArray { (response: DataResponse<[SeasonModel]>) in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.queryString, headers: TraktCredentials.header).responseArray { (response: DataResponse<[SeasonModel]>) in
             
             completionHandler(response.result.value)
         }

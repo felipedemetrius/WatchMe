@@ -74,31 +74,36 @@ extension SerieModel {
 
     }
     
+    private func getCorrectEpisode(episode : EpisodeModel)-> EpisodeModel{
+        
+        if let episodeLocal = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
+            return episodeLocal
+        } else {
+            return episode
+        }
+
+    }
+    
     func addEpisode(episode: EpisodeModel){
+        
+        let correctEpisode = getCorrectEpisode(episode: episode)
         
         let realm = try! Realm()
         
         if SerieRepository.getLocal(slug: self.slug ?? "") == nil {
             
             try! realm.write {
+                
                 realm.add(self)
                 
-                if let episodeLocal = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
-                    self.watchedEpisodes.append(episodeLocal)
-                } else {
-                    self.watchedEpisodes.append(episode)
-                }
+                self.watchedEpisodes.append(correctEpisode)
                 self.watching = true
             }
             
         } else {
             try! realm.write {
-                if let episodeLocal = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
-                    self.watchedEpisodes.append(episodeLocal)
-                } else {
-                    self.watchedEpisodes.append(episode)
-                }
                 
+                self.watchedEpisodes.append(correctEpisode)
                 self.watching = true
             }
         }

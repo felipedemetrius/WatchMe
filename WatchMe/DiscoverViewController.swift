@@ -120,7 +120,7 @@ extension DiscoverViewController : UIScrollViewDelegate {
         
         if  maximumOffset - scrollView.contentOffset.y <= 0  {
             
-            SerieRepository.nextSeries(completionHandler: {[weak self] series in
+            SerieRepository.nextTrending(completionHandler: {[weak self] series in
                 
                 if let seriess = series, seriess.count > 0 {
                     self?.dataSource += seriess

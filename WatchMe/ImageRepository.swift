@@ -12,11 +12,11 @@ import Alamofire
 
 class ImageRepository{
 
-    class func getImage(imdb: String, completionHandler: @escaping (ImageSerieModel?) -> ()){
+    class func getImage(imdb: String, completionHandler: @escaping (ImageModel?) -> ()){
         
         let url = "http://www.omdbapi.com/?i=\(imdb)&plot=short&r=json"
         
-        Alamofire.request(url, method: .get, encoding: URLEncoding.httpBody).responseObject { (response: DataResponse<ImageSerieModel>) in
+        Alamofire.request(url, method: .get, encoding: URLEncoding.httpBody).responseObject { (response: DataResponse<ImageModel>) in
             
             completionHandler(response.result.value)
         }
