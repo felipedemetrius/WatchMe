@@ -35,11 +35,6 @@ class DetailSerieViewController: UIViewController {
         getLocalSerie()
     }
     
-    override func viewDidLayoutSubviews() {
-        tableView.separatorInset = UIEdgeInsets.zero
-        tableView.layoutMargins = UIEdgeInsets.zero
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -71,9 +66,9 @@ class DetailSerieViewController: UIViewController {
         
         tableView.register(UINib(nibName: "ActionsSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ActionsSerieTableViewCell")
         
-        tableView.register(UINib(nibName: "ImageDetailSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageDetailSerieTableViewCell")
+        tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageTableViewCell")
         
-        tableView.register(UINib(nibName: "NextEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "NextEpisodeTableViewCell")
+        tableView.register(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "EpisodeTableViewCell")
 
         tableView.register(UINib(nibName: "MoreEpisodesTableViewCell", bundle: nil), forCellReuseIdentifier: "MoreEpisodesTableViewCell")
 
@@ -112,7 +107,6 @@ extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 5
     }
     
@@ -151,7 +145,7 @@ extension DetailSerieViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 0 { return 140 }
+        if indexPath.row == 0 { return 139 }
         if indexPath.row == 2 { return 175 }
         return UITableViewAutomaticDimension
     }
@@ -168,7 +162,7 @@ extension DetailSerieViewController {
     
     func getImageCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageDetailSerieTableViewCell", for: indexPath) as? ImageDetailSerieTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as? ImageTableViewCell
                 
         cell?.configureImage(imdb: serie.imdb)
         
@@ -186,7 +180,7 @@ extension DetailSerieViewController {
     
     func getNextEpisodeCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as? EpisodeTableViewCell
         
         cell?.configureNextEpisode(episode: nextEpisode)
         

@@ -1,5 +1,5 @@
 //
-//  NextEpisodeTableViewCell.swift
+//  EpisodeTableViewCell.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/20/17.
@@ -9,12 +9,10 @@
 import UIKit
 import Kingfisher
 
-class NextEpisodeTableViewCell: UITableViewCell {
+class EpisodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnWatch: UIButton!
-    
     @IBOutlet weak var imageEpisode: UIImageView!
-    
     @IBOutlet weak var lblNextEpisode: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblEpisode: UILabel!
@@ -40,21 +38,19 @@ class NextEpisodeTableViewCell: UITableViewCell {
         
         guard let episode = episode else {
             lblTitle.text = "Unavailable"
+            //self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
             return
         }
         
-        lblTitle.text = episode.title
-        
-        lblEpisode.text = episode.target
-        
-        lblDate.text = episode.first_aired
-        
-        btnWatch.isHidden = true
-        
-        ImageSerieRepository.getImageSerie(imdb: episode.imdb ?? "") {[weak self] result in
+        ImageRepository.getImage(imdb: episode.imdb ?? "") {[weak self] result in
             
             self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
         }
+        
+        lblTitle.text = episode.title
+        lblEpisode.text = episode.target
+        lblDate.text = episode.first_aired
+        btnWatch.isHidden = true
     }
     
     func configureEpisode(episode: EpisodeModel, serie: SerieModel){
@@ -63,12 +59,11 @@ class NextEpisodeTableViewCell: UITableViewCell {
         self.serie = serie
         
         lblTitle.text = episode.title
-        
+        lblNextEpisode.text = ""
         lblEpisode.text = episode.target
-        
         btnWatch.isHidden = false
         
-        ImageSerieRepository.getImageSerie(imdb: episode.imdb ?? "") {[weak self] result in
+        ImageRepository.getImage(imdb: episode.imdb ?? "") {[weak self] result in
             
             self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
         }

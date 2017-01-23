@@ -134,6 +134,7 @@ class SerieRepository{
     }
     
     class func getSlugsLocal()-> [String]?{
+        
         let realm = try! Realm()
         let series = realm.objects(SerieModel.self).filter("watching == true")
         

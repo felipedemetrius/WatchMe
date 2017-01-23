@@ -1,5 +1,5 @@
 //
-//  ImageDetailSerieTableViewCell.swift
+//  ImageTableViewCell.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/20/17.
@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ImageDetailSerieTableViewCell: UITableViewCell {
+class ImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imageSerie: UIImageView!
     
@@ -26,7 +26,7 @@ class ImageDetailSerieTableViewCell: UITableViewCell {
     
     func configureImage(imdb: String?){
         
-        ImageSerieRepository.getImageSerie(imdb: imdb ?? "", completionHandler: {[weak self] result in
+        ImageRepository.getImage(imdb: imdb ?? "", completionHandler: {[weak self] result in
             
             self?.imageSerie.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
         })

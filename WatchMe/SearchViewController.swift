@@ -12,7 +12,6 @@ import Alamofire
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dataSource : [SerieModel] = []
@@ -50,7 +49,7 @@ class SearchViewController: UIViewController {
         
         let screenWidth = UIScreen.main.bounds.width
         
-        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2)
+        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2 + screenWidth/5)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 5
         
@@ -73,7 +72,8 @@ class SearchViewController: UIViewController {
             if let serie = sender as? SerieModel {
                 vc?.serie = serie
             }
-    }    }
+        }
+    }
  
 
 }
@@ -130,7 +130,7 @@ extension SearchViewController : UICollectionViewDelegate, UICollectionViewDataS
         
         let screenWidth = UIScreen.main.bounds.width
         
-        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2);
+        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2 + screenWidth/5)
     }
     
     

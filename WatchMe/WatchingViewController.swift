@@ -40,7 +40,7 @@ class WatchingViewController: UIViewController {
         
         let screenWidth = UIScreen.main.bounds.width
         
-        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2)
+        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2 + screenWidth/5)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 5
         
@@ -83,7 +83,7 @@ extension WatchingViewController : UICollectionViewDelegate, UICollectionViewDat
         
         let screenWidth = UIScreen.main.bounds.width
         
-        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2);
+        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2 + screenWidth/5)
     }
     
     

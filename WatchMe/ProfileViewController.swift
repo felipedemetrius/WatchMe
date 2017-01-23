@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 175
         
-        tableView.register(UINib(nibName: "NextEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "NextEpisodeTableViewCell")
+        tableView.register(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "EpisodeTableViewCell")
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,7 +122,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let series = self.dataSource else {return 0}
-        return series.count
+        return series.count        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,7 +133,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         
         var episode : EpisodeModel?
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as? EpisodeTableViewCell
         
         if segmentControl.selectedSegmentIndex == 0 {
             episode = serie.watchedEpisodes[indexPath.row]
@@ -151,7 +151,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         
         guard let series = self.dataSource else {return nil}
         
-        let headerView = Bundle.main.loadNibNamed("HeaderSeasonTableViewCell", owner: nil, options: nil)! [0] as! HeaderSeasonTableViewCell
+        let headerView = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: nil, options: nil)! [0] as! HeaderTableViewCell
         
         let serie  = series[section]
         headerView.lblNumber.text = serie.title

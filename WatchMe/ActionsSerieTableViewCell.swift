@@ -12,7 +12,6 @@ import UIKit
 class ActionsSerieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnWatch: UIButton!
-    @IBOutlet weak var btnWishlist: UIButton!
     @IBOutlet weak var lblPercent: UILabel!
     @IBOutlet weak var lblProgress: UILabel!
     
@@ -33,7 +32,7 @@ class ActionsSerieTableViewCell: UITableViewCell {
         
         self.serie = serie
         
-        lblPercent.text = progress().description + "%"
+        lblPercent.text = percentWatched().description + "%"
         lblProgress.text = serie.watchedEpisodes.count.description + "/" + serie.aired_episodes.description
         
         if serie.watching {
@@ -42,29 +41,10 @@ class ActionsSerieTableViewCell: UITableViewCell {
             btnWatch.setImage(UIImage(named: "watching_icon"), for: UIControlState.normal)
         }
 
-        if serie.wishlist {
-            btnWishlist.setImage(UIImage(named: "wishlist_remove"), for: UIControlState.normal)
-        } else {
-            btnWishlist.setImage(UIImage(named: "wishlist_add"), for: UIControlState.normal)
-        }
-
     }
     
-    private func progress()-> Int{
+    private func percentWatched()-> Int{
         return serie.watchedEpisodes.count * 100 / serie.aired_episodes
-    }
-
-    @IBAction func wishlist(_ sender: UIButton) {
-        
-        if serie.wishlist {
-            serie.update(value: false, key: "wishlist")
-            btnWishlist.setImage(UIImage(named: "wishlist_add"), for: UIControlState.normal)
-            
-        } else {
-            serie.update(value: true, key: "wishlist")
-            btnWishlist.setImage(UIImage(named: "wishlist_remove"), for: UIControlState.normal)
-        }
-
     }
     
     @IBAction func watch(_ sender: UIButton) {
@@ -78,11 +58,8 @@ class ActionsSerieTableViewCell: UITableViewCell {
             
             configureCell(serie: serie)
             btnWatch.setImage(UIImage(named: "nowatching_icon"), for: UIControlState.normal)
-            
         }
         
     }
-    
-    
     
 }

@@ -11,7 +11,6 @@ import UIKit
 class ActionEpisodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnWatch: UIButton!
-    
     @IBOutlet weak var lblTitle: UILabel!
     
     var serie : SerieModel!

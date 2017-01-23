@@ -1,5 +1,5 @@
 //
-//  HeaderSeasonTableViewCell.swift
+//  HeaderTableViewCell.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/22/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderSeasonTableViewCell: UITableViewCell {
+class HeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblNumber: UILabel!
     

@@ -45,8 +45,6 @@ class DiscoverViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.delegate = self
-        //searchController.searchBar.tintColor = UIColor.whiteColor
-        //searchController.searchBar.barTintColor = ColorConstants.orange
     }
 
     
@@ -57,7 +55,7 @@ class DiscoverViewController: UIViewController {
         
         let screenWidth = UIScreen.main.bounds.width
         
-        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2)
+        layout.itemSize = CGSize(width: screenWidth / 2 - 10, height: screenWidth / 2 + screenWidth/5)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 5
         
@@ -128,10 +126,8 @@ extension DiscoverViewController : UIScrollViewDelegate {
                     self?.dataSource += seriess
                     self?.collectionView.reloadData()
                 }
-                
             })
         }
-
     }
 }
 
@@ -146,7 +142,7 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
         
         let screenWidth = UIScreen.main.bounds.width
         
-        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2);
+        return CGSize(width: screenWidth/2 - 10, height: screenWidth/2 + screenWidth/5);
     }
     
     

@@ -32,7 +32,7 @@ class SerieCollectionViewCell: UICollectionViewCell {
     
     private func configureImage(imdb: String){
         
-        ImageSerieRepository.getImageSerie(imdb: imdb, completionHandler: {[weak self] result in
+        ImageRepository.getImage(imdb: imdb, completionHandler: {[weak self] result in
             
             self?.activityIndicator.stopAnimating()
             self?.imageView.kf.setImage(with: URL(string: result?.imageUrl ?? ""))

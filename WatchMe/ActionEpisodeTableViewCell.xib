@@ -22,6 +22,7 @@
                         <rect key="frame" x="20" y="11" width="48" height="66.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="S8F-uu-Jvt"/>
+                            <constraint firstAttribute="height" constant="66.5" id="kn7-vr-w4r"/>
                         </constraints>
                         <state key="normal" image="wacthing_icon"/>
                         <connections>

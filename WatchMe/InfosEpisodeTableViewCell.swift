@@ -11,9 +11,7 @@ import UIKit
 class InfosEpisodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblSeason: UILabel!
-    
     @IBOutlet weak var lblNumber: UILabel!
-    
     @IBOutlet weak var lblDate: UILabel!
     
     override func awakeFromNib() {

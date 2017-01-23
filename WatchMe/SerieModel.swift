@@ -25,9 +25,7 @@ class SerieModel: Object, Mappable {
     dynamic var aired_episodes : Int = 0
 
     dynamic var watching = false
-    dynamic var wishlist = false
     var watchedEpisodes = List<EpisodeModel>()
-    
     var nextEpisode : EpisodeModel?
     
     required convenience init?(map: Map) {
@@ -119,15 +117,6 @@ extension SerieModel {
         
     }
     
-    func removeAllEpisodes(){
-        
-        let realm = try! Realm()
-        try! realm.write {
-            self.watchedEpisodes.removeAll()
-        }
-            
-    }
-
     func remove(){
         
         let realm = try! Realm()

@@ -50,7 +50,7 @@ class SeasonsSerieViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 175
         
-        tableView.register(UINib(nibName: "NextEpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "NextEpisodeTableViewCell")
+        tableView.register(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: "EpisodeTableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,7 +106,7 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
         
         guard let episode = season.episodes?[indexPath.row] else {return UITableViewCell()}
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NextEpisodeTableViewCell", for: indexPath) as? NextEpisodeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as? EpisodeTableViewCell
         
         cell?.configureEpisode(episode: episode, serie: serie)
         
@@ -118,7 +118,7 @@ extension SeasonsSerieViewController : UITableViewDelegate, UITableViewDataSourc
         
         guard let seasons = self.seasons else {return nil}
 
-        let headerView = Bundle.main.loadNibNamed("HeaderSeasonTableViewCell", owner: nil, options: nil)! [0] as! HeaderSeasonTableViewCell
+        let headerView = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: nil, options: nil)! [0] as! HeaderTableViewCell
         
         let season  = seasons[section]
         headerView.lblNumber.text = "Season " + (season.number?.description ?? "")

@@ -64,7 +64,7 @@ class DetailEpisodeViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 175
         
-        tableView.register(UINib(nibName: "ImageDetailSerieTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageDetailSerieTableViewCell")
+        tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageTableViewCell")
         
         tableView.register(UINib(nibName: "OverviewTableViewCell", bundle: nil), forCellReuseIdentifier: "OverviewTableViewCell")
        
@@ -137,7 +137,7 @@ extension DetailEpisodeViewController {
     
     func getImageCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageDetailSerieTableViewCell", for: indexPath) as? ImageDetailSerieTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as? ImageTableViewCell
         
         cell?.configureImage(imdb: episode?.imdb ?? "")
         

@@ -1,5 +1,5 @@
 //
-//  ImageSerieRepository.swift
+//  ImageRepository.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/19/17.
@@ -10,9 +10,9 @@ import ObjectMapper
 import AlamofireObjectMapper
 import Alamofire
 
-class ImageSerieRepository{
+class ImageRepository{
 
-    class func getImageSerie(imdb: String, completionHandler: @escaping (ImageSerieModel?) -> ()){
+    class func getImage(imdb: String, completionHandler: @escaping (ImageSerieModel?) -> ()){
         
         let url = "http://www.omdbapi.com/?i=\(imdb)&plot=short&r=json"
         
