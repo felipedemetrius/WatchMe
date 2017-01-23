@@ -35,7 +35,9 @@ class SerieCollectionViewCell: UICollectionViewCell {
         ImageRepository.getImage(imdb: imdb, completionHandler: {[weak self] result in
             
             self?.activityIndicator.stopAnimating()
-            self?.imageView.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+            
+            self?.imageView.kf.setImage(with: URL(string: result?.imageUrl ?? ""), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+
         })
     }
 

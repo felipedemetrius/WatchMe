@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPZ-Mf-zav">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aPZ-Mf-zav">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                     </imageView>
                 </subviews>
@@ -34,4 +34,7 @@
             <point key="canvasLocation" x="34" y="175"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="placeholder" width="800" height="600"/>
+    </resources>
 </document>

@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="127" height="197"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGb-c6-3hk">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tGb-c6-3hk">
                         <rect key="frame" x="0.0" y="0.0" width="127" height="152"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game of Thrones" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="lwf-o6-NHv">
@@ -53,4 +53,7 @@
             <point key="canvasLocation" x="6.5" y="127.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="placeholder" width="800" height="600"/>
+    </resources>
 </document>

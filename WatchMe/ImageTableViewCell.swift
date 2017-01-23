@@ -28,7 +28,8 @@ class ImageTableViewCell: UITableViewCell {
         
         ImageRepository.getImage(imdb: imdb ?? "", completionHandler: {[weak self] result in
             
-            self?.imageSerie.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+            self?.imageSerie.kf.setImage(with: URL(string: result?.imageUrl ?? ""), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
+            
         })
 
     }

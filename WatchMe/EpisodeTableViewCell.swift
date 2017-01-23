@@ -38,13 +38,13 @@ class EpisodeTableViewCell: UITableViewCell {
         
         guard let episode = episode else {
             lblTitle.text = "Unavailable"
-            //self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+            self.imageEpisode.image = UIImage(named: "placeholder")
             return
         }
         
         ImageRepository.getImage(imdb: episode.imdb ?? "") {[weak self] result in
             
-            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         
         lblTitle.text = episode.title
@@ -65,7 +65,7 @@ class EpisodeTableViewCell: UITableViewCell {
         
         ImageRepository.getImage(imdb: episode.imdb ?? "") {[weak self] result in
             
-            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""))
+            self?.imageEpisode.kf.setImage(with: URL(string: result?.imageUrl ?? ""), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
         }
 
         if SerieRepository.getEpisodeWatched(slug: serie.slug ?? "", target: episode.target ?? "") != nil {
