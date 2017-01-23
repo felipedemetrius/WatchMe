@@ -13,12 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    var dataSource : [SerieModel]? {
-        return seriesWatching
-    }
-    
-    private var seriesWatching : [SerieModel]?
-    private var seriesNextUp : [SerieModel]?
+    var dataSource : [SerieModel]?
     
     fileprivate var segueSerie : SerieModel!
     
@@ -38,14 +33,14 @@ class ProfileViewController: UIViewController {
     
     private func configureDatasource(){
         
-        seriesWatching = SerieRepository.getSeriesWithEpisodes()
+        dataSource = SerieRepository.getSeriesWithEpisodes()
         
-        guard seriesWatching != nil else {return}
+        guard dataSource != nil else {return}
         
-        for (index, serie) in seriesWatching!.enumerated(){
+        for (index, serie) in dataSource!.enumerated(){
             
             EpisodeRepository.getNextEpisode(slug: serie.slug ?? "") { [weak self] episode in
-                self?.seriesWatching![index].nextEpisode = episode
+                self?.dataSource![index].nextEpisode = episode
                 self?.tableView.reloadData()
             }
         }
