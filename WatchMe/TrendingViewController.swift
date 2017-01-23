@@ -1,5 +1,5 @@
 //
-//  DiscoverViewController.swift
+//  TrendingViewController.swift
 //  WatchMe
 //
 //  Created by Felipe Silva  on 1/19/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoverViewController: UIViewController {
+class TrendingViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -85,7 +85,7 @@ class DiscoverViewController: UIViewController {
 
 }
 
-extension DiscoverViewController: UISearchBarDelegate{
+extension TrendingViewController: UISearchBarDelegate{
     
     @IBAction func search(_ sender: UIBarButtonItem) {
         searchController.searchBar.placeholder = "Search Series"
@@ -101,7 +101,7 @@ extension DiscoverViewController: UISearchBarDelegate{
     }
 }
 
-extension DiscoverViewController : UIScrollViewDelegate {
+extension TrendingViewController : UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -124,7 +124,7 @@ extension DiscoverViewController : UIScrollViewDelegate {
     }
 }
 
-extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension TrendingViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

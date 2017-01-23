@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-198" y="-2"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--Trending View Controller-->
         <scene sceneID="NS4-Am-7s9">
             <objects>
-                <viewController id="eqx-NC-73T" customClass="DiscoverViewController" customModule="WatchMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eqx-NC-73T" customClass="TrendingViewController" customModule="WatchMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JUk-Rb-w89"/>
                         <viewControllerLayoutGuide type="bottom" id="Cye-7i-qhk"/>
@@ -157,6 +157,6 @@
         <image name="discover_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eNM-Id-QnT"/>
+        <segue reference="S5S-Nt-vH1"/>
     </inferredMetricsTieBreakers>
 </document>

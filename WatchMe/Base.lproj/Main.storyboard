@@ -27,11 +27,11 @@
             </objects>
             <point key="canvasLocation" x="-866" y="-333"/>
         </scene>
-        <!--Discover-->
+        <!--Trending-->
         <scene sceneID="gwR-gs-EWg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Discover" id="VWD-6U-kvx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="discover_icon" id="v8Q-bB-RUb"/>
+                <viewControllerPlaceholder storyboardName="Trending" id="VWD-6U-kvx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trending" image="discover_icon" id="v8Q-bB-RUb"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1h-08-8z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

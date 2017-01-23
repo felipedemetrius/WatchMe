@@ -26,27 +26,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7Ed-Rc-vve">
-                        <rect key="frame" x="53" y="66.5" width="20" height="20"/>
-                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="tGb-c6-3hk" secondAttribute="bottom" constant="45" id="3em-Cm-c3k"/>
-                <constraint firstItem="7Ed-Rc-vve" firstAttribute="centerY" secondItem="tGb-c6-3hk" secondAttribute="centerY" id="94P-34-6go"/>
                 <constraint firstItem="lwf-o6-NHv" firstAttribute="top" secondItem="tGb-c6-3hk" secondAttribute="bottom" constant="2" id="9rd-Yv-pDh"/>
                 <constraint firstAttribute="trailing" secondItem="tGb-c6-3hk" secondAttribute="trailing" id="AaK-dW-m3V"/>
                 <constraint firstItem="tGb-c6-3hk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="J48-GS-Qnr"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lwf-o6-NHv" secondAttribute="trailing" id="Kd4-CN-5y7"/>
                 <constraint firstItem="lwf-o6-NHv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RXN-Vq-Tde"/>
-                <constraint firstItem="7Ed-Rc-vve" firstAttribute="centerX" secondItem="tGb-c6-3hk" secondAttribute="centerX" id="bM7-Ru-bDB"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lwf-o6-NHv" secondAttribute="bottom" constant="4" id="g9W-XC-BnI"/>
                 <constraint firstItem="lwf-o6-NHv" firstAttribute="centerX" secondItem="tGb-c6-3hk" secondAttribute="centerX" id="jP8-Sl-sQe"/>
                 <constraint firstItem="tGb-c6-3hk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m1v-1m-TFH"/>
             </constraints>
             <size key="customSize" width="127" height="197"/>
             <connections>
-                <outlet property="activityIndicator" destination="7Ed-Rc-vve" id="Z4c-K6-vhf"/>
                 <outlet property="imageView" destination="tGb-c6-3hk" id="b7l-iy-uzG"/>
                 <outlet property="label" destination="lwf-o6-NHv" id="cK1-fO-1Wn"/>
             </connections>

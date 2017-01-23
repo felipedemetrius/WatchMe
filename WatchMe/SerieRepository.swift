@@ -13,46 +13,6 @@ import Alamofire
 import RealmSwift
 import ObjectMapper_Realm
 
-enum TraktUrl: String{
-    
-    case Base        = "https://api.trakt.tv/"
-    case Shows       = "shows/"
-    case Seasons     = "seasons/"
-    case Episodes    = "episodes/"
-    case Full        = "?extended=full"
-    case Trending    = "shows/trending/?extended=full"
-    case Search      = "search/show?extended=full"
-    case NextEpisode = "next_episode?extended=full"
-    case SeasonsFull = "seasons?extended=episodes"
-        
-    var description: String{
-        switch self{
-        case .Base:
-            return rawValue
-        default:
-            return TraktUrl.Base.description + rawValue
-        }
-    }
-}
-
-struct TraktCredentials{
-    
-    static var key:String{
-        return "63b91d36f0e1ca57e602f791cc912a972ff3e6d93a96d43b135457adcd1cc04f"
-    }
-    
-    static var header:[String:String]{
-        
-        let headers = [
-            "Content-Type"  : "application/json",
-            "trakt-api-key" : "\(key)",
-            "trakt-api-version": "2"
-        ]
-        
-        return headers
-    }
-    
-}
 
 class WrapperShow<T: Mappable>: Mappable {
     
@@ -138,19 +98,19 @@ class SerieRepository{
     }
     
     class func getLocal(slug : String) -> SerieModel? {
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return nil}
         return realm.objects(SerieModel.self).filter("slug == '\(slug)'").first
     }
     
     class func getWatching() -> [SerieModel]? {
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return nil}
         let series = realm.objects(SerieModel.self).filter("watching == true")
         return series.reversed()
     }
     
     class func getSlugsLocal()-> [String]?{
         
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return nil}
         let series = realm.objects(SerieModel.self).filter("watching == true")
         
         var slugs : [String] = []
@@ -163,7 +123,8 @@ class SerieRepository{
     }
     
     class func getSeriesWithEpisodes() -> [SerieModel]? {
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return nil}
+
         let series = realm.objects(SerieModel.self).filter("watching == true").filter { serie -> Bool in
             return serie.watchedEpisodes.count > 0
         }
@@ -172,7 +133,8 @@ class SerieRepository{
     }
     
     class func getEpisodeWatched(slug : String, target: String) -> EpisodeModel? {
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return nil}
+
         return realm.objects(SerieModel.self).filter("slug == '\(slug)'").first?.watchedEpisodes.first(where: { episode -> Bool in
             return episode.target == target
         })

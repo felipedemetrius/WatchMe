@@ -11,7 +11,6 @@ import Kingfisher
 
 class SerieCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
@@ -32,12 +31,13 @@ class SerieCollectionViewCell: UICollectionViewCell {
     
     private func configureImage(imdb: String){
         
+        self.imageView.kf.indicator?.startAnimatingView()
+        
         ImageRepository.getImage(imdb: imdb, completionHandler: {[weak self] result in
-            
-            self?.activityIndicator.stopAnimating()
             
             self?.imageView.kf.setImage(with: URL(string: result?.imageUrl ?? ""), placeholder: UIImage(named: "placeholder"), options: nil, progressBlock: nil, completionHandler: nil)
 
+            self?.imageView.kf.indicator?.stopAnimatingView()
         })
     }
 

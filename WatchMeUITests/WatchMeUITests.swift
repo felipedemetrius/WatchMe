@@ -35,7 +35,7 @@ class WatchMeUITests: XCTestCase {
         
         sleep(3)
         
-        app = testDiscoverVC(app: app)
+        app = testTrendingVC(app: app)
         
         sleep(3)
         
@@ -59,7 +59,7 @@ class WatchMeUITests: XCTestCase {
 
     }
     
-    private func testDiscoverVC(app : XCUIApplication) -> XCUIApplication{
+    private func testTrendingVC(app : XCUIApplication) -> XCUIApplication{
         
         app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeUp()
         

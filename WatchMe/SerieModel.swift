@@ -55,21 +55,28 @@ extension SerieModel {
     
     func update(value: Any?, key: String){
         
-        let realm = try! Realm()
-        
         guard let slug = self.slug else {return}
+        
+        guard let realm = Realm.safe() else {return}
         
         if SerieRepository.getLocal(slug: slug) == nil {
             
-            try! realm.write {
-                realm.add(self)
-                self.setValue(value, forKey: key)
-            }
+            do {
+                try realm.write {
+                    realm.add(self)
+                    self.setValue(value, forKey: key)
+                }
+            }catch{ }
             
         } else {
-            try! realm.write {
-                self.setValue(value, forKey: key)
-            }
+            
+            do {
+                try realm.write {
+                    self.setValue(value, forKey: key)
+                }
+            }catch{ }
+            
+            
         }
 
     }
@@ -88,24 +95,31 @@ extension SerieModel {
         
         let correctEpisode = getCorrectEpisode(episode: episode)
         
-        let realm = try! Realm()
+        guard let realm = Realm.safe() else {return}
         
         if SerieRepository.getLocal(slug: self.slug ?? "") == nil {
             
-            try! realm.write {
-                
-                realm.add(self)
-                
-                self.watchedEpisodes.append(correctEpisode)
-                self.watching = true
-            }
+            do {
+                try realm.write {
+                    
+                    realm.add(self)
+                    
+                    self.watchedEpisodes.append(correctEpisode)
+                    self.watching = true
+                }
+            }catch{}
             
         } else {
-            try! realm.write {
-                
-                self.watchedEpisodes.append(correctEpisode)
-                self.watching = true
-            }
+            
+            do {
+                try realm.write {
+                    
+                    self.watchedEpisodes.append(correctEpisode)
+                    self.watching = true
+                }
+            }catch{ }
+            
+            
         }
     }
     
@@ -113,30 +127,41 @@ extension SerieModel {
         
         if let episode = EpisodeRepository.getLocal(tvdb: episode.tvdb) {
             
-            let realm = try! Realm()
-            try! realm.write {
-                guard let index = self.watchedEpisodes.index(of: episode) else {return}
-                self.watchedEpisodes.remove(objectAtIndex: index)
-            }
+            guard let realm = Realm.safe() else {return}
+            
+            do {
+                try realm.write {
+                    guard let index = self.watchedEpisodes.index(of: episode) else {return}
+                    self.watchedEpisodes.remove(objectAtIndex: index)
+                }
+            }catch{}
+            
+            
         }
         
     }
     
     func removeAllEpisodes(){
-        let realm = try! Realm()
         
-        try! realm.write {
-            self.watchedEpisodes.removeAll()
-        }
-
+        guard let realm = Realm.safe() else {return}
+        
+        do {
+            try realm.write {
+                self.watchedEpisodes.removeAll()
+            }
+        }catch{}
+        
     }
     
     func remove(){
         
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(self)
-        }
+        guard let realm = Realm.safe() else {return}
+        
+        do {
+            try realm.write {
+                realm.delete(self)
+            }
+        }catch{}
         
     }
 

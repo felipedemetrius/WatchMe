@@ -44,6 +44,7 @@ class ActionsSerieTableViewCell: UITableViewCell {
     }
     
     private func percentWatched()-> Int{
+        if serie.aired_episodes == 0 {return 0}
         return serie.watchedEpisodes.count * 100 / serie.aired_episodes
     }
     
